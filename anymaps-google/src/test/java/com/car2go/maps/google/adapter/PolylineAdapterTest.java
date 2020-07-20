@@ -6,7 +6,7 @@
 
 package com.car2go.maps.google.adapter;
 
-import com.google.android.gms.maps.model.Polyline;
+import com.google.android.libraries.maps.model.Polyline;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

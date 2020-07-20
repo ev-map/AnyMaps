@@ -11,7 +11,7 @@ android {
 
     defaultConfig {
         applicationId "com.car2go.example"
-        minSdkVersion 15
+        minSdkVersion 16
         targetSdkVersion 29
         versionCode 1
         versionName "1.0"
@@ -35,7 +35,7 @@ dependencies {
     implementation project(":anymaps-mapbox")
     implementation project(':anymaps-osm')
 
-    implementation 'com.google.android.gms:play-services-maps:17.0.0'
+    implementation 'com.google.android.libraries.maps:maps:3.1.0-beta'
 
     implementation 'androidx.appcompat:appcompat:1.1.0'
 }

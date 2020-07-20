@@ -28,7 +28,7 @@ public class PolygonOptionsMapperTest {
 				.add(new LatLng(10, 10));
 
 		// When
-		com.google.android.gms.maps.model.PolygonOptions output = mapper.map(input);
+		com.google.android.libraries.maps.model.PolygonOptions output = mapper.map(input);
 
 		// Then
 		assertEquals(

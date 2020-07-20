@@ -9,18 +9,18 @@ package com.car2go.maps.google.adapter.factory.google;
 import com.car2go.maps.google.adapter.AnyMapAdapter;
 import com.car2go.maps.google.adapter.factory.Mapper;
 import com.car2go.maps.model.CircleOptions;
-import com.google.android.gms.maps.model.LatLng;
+import com.google.android.libraries.maps.model.LatLng;
 
 /**
  * Maps AnyMap CircleOptions to Google CircleOptions
  */
-public class CircleOptionsMapper implements Mapper<CircleOptions, com.google.android.gms.maps.model.CircleOptions> {
+public class CircleOptionsMapper implements Mapper<CircleOptions, com.google.android.libraries.maps.model.CircleOptions> {
 
 	@Override
-	public com.google.android.gms.maps.model.CircleOptions map(CircleOptions input) {
+	public com.google.android.libraries.maps.model.CircleOptions map(CircleOptions input) {
 		LatLng center = AnyMapAdapter.adapt(input.getCenter());
 
-		return new com.google.android.gms.maps.model.CircleOptions()
+		return new com.google.android.libraries.maps.model.CircleOptions()
 				.center(center)
 				.radius(input.getRadius())
 				.fillColor(input.getFillColor())

@@ -13,9 +13,9 @@ import com.car2go.maps.CameraUpdate;
  */
 public class CameraUpdateAdapter implements CameraUpdate {
 
-	public final com.google.android.gms.maps.CameraUpdate wrappedCameraUpdate;
+	public final com.google.android.libraries.maps.CameraUpdate wrappedCameraUpdate;
 
-	public CameraUpdateAdapter(com.google.android.gms.maps.CameraUpdate wrappedCameraUpdate) {
+	public CameraUpdateAdapter(com.google.android.libraries.maps.CameraUpdate wrappedCameraUpdate) {
 		this.wrappedCameraUpdate = wrappedCameraUpdate;
 	}
 

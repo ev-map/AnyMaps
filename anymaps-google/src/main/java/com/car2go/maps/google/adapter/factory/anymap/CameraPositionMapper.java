@@ -9,7 +9,7 @@ package com.car2go.maps.google.adapter.factory.anymap;
 import com.car2go.maps.google.adapter.AnyMapAdapter;
 import com.car2go.maps.google.adapter.factory.Mapper;
 import com.car2go.maps.model.LatLng;
-import com.google.android.gms.maps.model.CameraPosition;
+import com.google.android.libraries.maps.model.CameraPosition;
 
 /**
  * Maps Google CameraPosition to AnyMap CameraPosition

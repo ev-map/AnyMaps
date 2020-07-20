@@ -15,9 +15,9 @@ import com.car2go.maps.model.Marker;
  */
 public class MarkerAdapter implements Marker {
 
-	private final com.google.android.gms.maps.model.Marker marker;
+	private final com.google.android.libraries.maps.model.Marker marker;
 
-	public MarkerAdapter(com.google.android.gms.maps.model.Marker marker) {
+	public MarkerAdapter(com.google.android.libraries.maps.model.Marker marker) {
 		this.marker = marker;
 	}
 

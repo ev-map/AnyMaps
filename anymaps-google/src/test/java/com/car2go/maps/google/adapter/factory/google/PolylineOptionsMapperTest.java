@@ -27,7 +27,7 @@ public class PolylineOptionsMapperTest {
 				.add(new LatLng(10, 10));
 
 		// When
-		com.google.android.gms.maps.model.PolylineOptions output = mapper.map(input);
+		com.google.android.libraries.maps.model.PolylineOptions output = mapper.map(input);
 
 		// Then
 		assertEquals(

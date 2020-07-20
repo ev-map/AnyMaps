@@ -28,10 +28,10 @@ public class CameraUpdateFactory implements com.car2go.maps.CameraUpdateFactory 
 
 	@Override
 	public CameraUpdate newLatLngZoom(LatLng latLng, float zoomLevel) {
-		com.google.android.gms.maps.model.LatLng googleLatLng = AnyMapAdapter.adapt(latLng);
+		com.google.android.libraries.maps.model.LatLng googleLatLng = AnyMapAdapter.adapt(latLng);
 
 		return new CameraUpdateAdapter(
-				com.google.android.gms.maps.CameraUpdateFactory.newLatLngZoom(
+				com.google.android.libraries.maps.CameraUpdateFactory.newLatLngZoom(
 						googleLatLng,
 						zoomLevel
 				)
@@ -43,7 +43,7 @@ public class CameraUpdateFactory implements com.car2go.maps.CameraUpdateFactory 
 		com.google.android.libraries.maps.model.LatLng googleLatLng = AnyMapAdapter.adapt(latLng);
 
 		return new CameraUpdateAdapter(
-				com.google.android.gms.maps.CameraUpdateFactory.newLatLng(
+				com.google.android.libraries.maps.CameraUpdateFactory.newLatLng(
 						googleLatLng
 				)
 		);
@@ -51,10 +51,10 @@ public class CameraUpdateFactory implements com.car2go.maps.CameraUpdateFactory 
 
 	@Override
 	public CameraUpdate newLatLngBounds(LatLngBounds bounds, int padding) {
-		com.google.android.gms.maps.model.LatLngBounds googleBounds = AnyMapAdapter.adapt(bounds);
+		com.google.android.libraries.maps.model.LatLngBounds googleBounds = AnyMapAdapter.adapt(bounds);
 
 		return new CameraUpdateAdapter(
-				com.google.android.gms.maps.CameraUpdateFactory.newLatLngBounds(
+				com.google.android.libraries.maps.CameraUpdateFactory.newLatLngBounds(
 						googleBounds,
 						padding
 				)
@@ -64,7 +64,7 @@ public class CameraUpdateFactory implements com.car2go.maps.CameraUpdateFactory 
 	@Override
 	public CameraUpdate zoomTo(float zoomLevel) {
 		return new CameraUpdateAdapter(
-				com.google.android.gms.maps.CameraUpdateFactory.zoomTo(zoomLevel)
+				com.google.android.libraries.maps.CameraUpdateFactory.zoomTo(zoomLevel)
 		);
 	}
 

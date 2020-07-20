@@ -6,7 +6,7 @@
 
 package com.car2go.maps.google.adapter;
 
-import com.google.android.gms.maps.model.Circle;
+import com.google.android.libraries.maps.model.Circle;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

@@ -13,9 +13,9 @@ import com.car2go.maps.UiSettings;
  */
 public class UiSettingsAdapter implements UiSettings {
 
-	private final com.google.android.gms.maps.UiSettings uiSettings;
+	private final com.google.android.libraries.maps.UiSettings uiSettings;
 
-	public UiSettingsAdapter(com.google.android.gms.maps.UiSettings uiSettings) {
+	public UiSettingsAdapter(com.google.android.libraries.maps.UiSettings uiSettings) {
 		this.uiSettings = uiSettings;
 	}
 

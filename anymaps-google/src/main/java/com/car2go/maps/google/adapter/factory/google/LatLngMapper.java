@@ -12,11 +12,11 @@ import com.car2go.maps.model.LatLng;
 /**
  * Maps AnyMap LatLng to Google LatLng
  */
-public class LatLngMapper implements Mapper<LatLng, com.google.android.gms.maps.model.LatLng> {
+public class LatLngMapper implements Mapper<LatLng, com.google.android.libraries.maps.model.LatLng> {
 
 	@Override
-	public com.google.android.gms.maps.model.LatLng map(LatLng input) {
-		return new com.google.android.gms.maps.model.LatLng(
+	public com.google.android.libraries.maps.model.LatLng map(LatLng input) {
+		return new com.google.android.libraries.maps.model.LatLng(
 				input.latitude,
 				input.longitude
 		);

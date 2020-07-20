@@ -31,7 +31,7 @@ android {
 dependencies {
     implementation project(':anymaps-base')
 
-    compileOnly 'com.google.android.gms:play-services-maps:17.0.0'
+    compileOnly 'com.google.android.libraries.maps:maps:3.1.0-beta'
 
     testImplementation 'junit:junit:4.13'
     testImplementation 'org.powermock:powermock-module-junit4:1.5.2'

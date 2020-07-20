@@ -13,9 +13,9 @@ import com.car2go.maps.model.BitmapDescriptor;
  */
 public class BitmapDescriptorAdapter implements BitmapDescriptor {
 
-	public final com.google.android.gms.maps.model.BitmapDescriptor wrappedDescriptor;
+	public final com.google.android.libraries.maps.model.BitmapDescriptor wrappedDescriptor;
 
-	public BitmapDescriptorAdapter(com.google.android.gms.maps.model.BitmapDescriptor wrappedDescriptor) {
+	public BitmapDescriptorAdapter(com.google.android.libraries.maps.model.BitmapDescriptor wrappedDescriptor) {
 		this.wrappedDescriptor = wrappedDescriptor;
 	}
 

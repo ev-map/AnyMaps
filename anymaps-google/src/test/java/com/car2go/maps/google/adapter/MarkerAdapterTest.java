@@ -7,8 +7,8 @@
 package com.car2go.maps.google.adapter;
 
 
-import com.google.android.gms.maps.model.BitmapDescriptor;
-import com.google.android.gms.maps.model.Marker;
+import com.google.android.libraries.maps.model.BitmapDescriptor;
+import com.google.android.libraries.maps.model.Marker;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

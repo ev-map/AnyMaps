@@ -8,7 +8,7 @@ package com.car2go.maps.google.adapter.factory.anymap;
 
 import com.car2go.maps.google.adapter.PolygonAdapter;
 import com.car2go.maps.google.adapter.factory.Mapper;
-import com.google.android.gms.maps.model.Polygon;
+import com.google.android.libraries.maps.model.Polygon;
 
 /**
  * Maps Google Polygon to AnyMap Polygon

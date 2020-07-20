@@ -12,8 +12,8 @@ import com.car2go.maps.google.adapter.BitmapDescriptorAdapter;
 import com.car2go.maps.google.adapter.TestUtil;
 import com.car2go.maps.model.LatLng;
 import com.car2go.maps.model.MarkerOptions;
-import com.google.android.gms.maps.model.BitmapDescriptor;
-import com.google.android.gms.maps.model.BitmapDescriptorFactory;
+import com.google.android.libraries.maps.model.BitmapDescriptor;
+import com.google.android.libraries.maps.model.BitmapDescriptorFactory;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -50,7 +50,7 @@ public class MarkerOptionsMapperTest {
 				.visible(true);
 
 		// When
-		com.google.android.gms.maps.model.MarkerOptions output = mapper.map(input);
+		com.google.android.libraries.maps.model.MarkerOptions output = mapper.map(input);
 
 		// Then
 		assertEquals(

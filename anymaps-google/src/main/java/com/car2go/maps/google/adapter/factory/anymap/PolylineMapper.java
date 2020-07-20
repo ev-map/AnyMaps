@@ -8,7 +8,7 @@ package com.car2go.maps.google.adapter.factory.anymap;
 
 import com.car2go.maps.google.adapter.PolylineAdapter;
 import com.car2go.maps.google.adapter.factory.Mapper;
-import com.google.android.gms.maps.model.Polyline;
+import com.google.android.libraries.maps.model.Polyline;
 
 /**
  * Maps Google Polyline to AnyMap Polyline

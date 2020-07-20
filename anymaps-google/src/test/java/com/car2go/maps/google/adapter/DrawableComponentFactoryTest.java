@@ -10,8 +10,8 @@ import com.car2go.maps.model.CircleOptions;
 import com.car2go.maps.model.MarkerOptions;
 import com.car2go.maps.model.PolygonOptions;
 import com.car2go.maps.model.PolylineOptions;
-import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.model.Marker;
+import com.google.android.libraries.maps.GoogleMap;
+import com.google.android.libraries.maps.model.Marker;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -50,7 +50,7 @@ public class DrawableComponentFactoryTest {
 		factory.addMarker(options);
 
 		// Then
-		verify(map).addMarker(any(com.google.android.gms.maps.model.MarkerOptions.class));
+		verify(map).addMarker(any(com.google.android.libraries.maps.model.MarkerOptions.class));
 	}
 
 	@Test
@@ -66,7 +66,7 @@ public class DrawableComponentFactoryTest {
 		factory.addCircle(options);
 
 		// Then
-		verify(map).addCircle(any(com.google.android.gms.maps.model.CircleOptions.class));
+		verify(map).addCircle(any(com.google.android.libraries.maps.model.CircleOptions.class));
 	}
 
 	@Test
@@ -82,7 +82,7 @@ public class DrawableComponentFactoryTest {
 		factory.addPolygon(options);
 
 		// Then
-		verify(map).addPolygon(any(com.google.android.gms.maps.model.PolygonOptions.class));
+		verify(map).addPolygon(any(com.google.android.libraries.maps.model.PolygonOptions.class));
 	}
 
 	@Test
@@ -98,7 +98,7 @@ public class DrawableComponentFactoryTest {
 		factory.addPolyline(options);
 
 		// Then
-		verify(map).addPolyline(any(com.google.android.gms.maps.model.PolylineOptions.class));
+		verify(map).addPolyline(any(com.google.android.libraries.maps.model.PolylineOptions.class));
 	}
 
 }

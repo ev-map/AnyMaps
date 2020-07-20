@@ -32,7 +32,7 @@ public class BitmapDescriptorFactory implements com.car2go.maps.BitmapDescriptor
 	@Override
 	public BitmapDescriptor fromBitmap(Bitmap bitmap) {
 		return new BitmapDescriptorAdapter(
-				com.google.android.gms.maps.model.BitmapDescriptorFactory.fromBitmap(bitmap)
+				com.google.android.libraries.maps.model.BitmapDescriptorFactory.fromBitmap(bitmap)
 		);
 	}
 

@@ -9,7 +9,7 @@ package com.car2go.maps.google.adapter.factory.anymap;
 import com.car2go.maps.google.adapter.AnyMapAdapter;
 import com.car2go.maps.google.adapter.factory.Mapper;
 import com.car2go.maps.model.LatLngBounds;
-import com.google.android.gms.maps.model.VisibleRegion;
+import com.google.android.libraries.maps.model.VisibleRegion;
 
 /**
  * Maps Google VisibleRegion to AnyMap VisibleRegion

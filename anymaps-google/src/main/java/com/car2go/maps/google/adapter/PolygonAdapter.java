@@ -17,9 +17,9 @@ import java.util.List;
  */
 public class PolygonAdapter implements Polygon {
 
-	private final com.google.android.gms.maps.model.Polygon polygon;
+	private final com.google.android.libraries.maps.model.Polygon polygon;
 
-	public PolygonAdapter(com.google.android.gms.maps.model.Polygon polygon) {
+	public PolygonAdapter(com.google.android.libraries.maps.model.Polygon polygon) {
 		this.polygon = polygon;
 	}
 
@@ -30,14 +30,14 @@ public class PolygonAdapter implements Polygon {
 
 	@Override
 	public List<LatLng> getPoints() {
-		return AnyMapAdapter.adaptList(com.google.android.gms.maps.model.LatLng.class, polygon.getPoints());
+		return AnyMapAdapter.adaptList(com.google.android.libraries.maps.model.LatLng.class, polygon.getPoints());
 	}
 
-	private List<? extends List<com.google.android.gms.maps.model.LatLng>> mapHoles(List<List<LatLng>> holes) {
-		ArrayList<List<com.google.android.gms.maps.model.LatLng>> result = new ArrayList<>();
+	private List<? extends List<com.google.android.libraries.maps.model.LatLng>> mapHoles(List<List<LatLng>> holes) {
+		ArrayList<List<com.google.android.libraries.maps.model.LatLng>> result = new ArrayList<>();
 
 		for (List<LatLng> hole : holes) {
-			List<com.google.android.gms.maps.model.LatLng> googleHole = AnyMapAdapter.adaptList(LatLng.class, hole);
+			List<com.google.android.libraries.maps.model.LatLng> googleHole = AnyMapAdapter.adaptList(LatLng.class, hole);
 
 			result.add(googleHole);
 		}

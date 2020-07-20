@@ -8,7 +8,7 @@ package com.car2go.maps.google.adapter.factory.anymap;
 
 import com.car2go.maps.google.adapter.ProjectionAdapter;
 import com.car2go.maps.google.adapter.factory.Mapper;
-import com.google.android.gms.maps.Projection;
+import com.google.android.libraries.maps.Projection;
 
 /**
  * Maps Google Projection to AnyMap Projection

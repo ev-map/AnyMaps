@@ -8,7 +8,7 @@ package com.car2go.maps.google.adapter.factory.anymap;
 
 import com.car2go.maps.google.adapter.UiSettingsAdapter;
 import com.car2go.maps.google.adapter.factory.Mapper;
-import com.google.android.gms.maps.UiSettings;
+import com.google.android.libraries.maps.UiSettings;
 
 /**
  * Maps Google UiSettings to AnyMap UiSettings

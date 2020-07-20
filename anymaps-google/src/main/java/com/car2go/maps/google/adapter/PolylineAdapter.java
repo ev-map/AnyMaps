@@ -13,9 +13,9 @@ import com.car2go.maps.model.Polyline;
  */
 public class PolylineAdapter implements Polyline {
 
-	private final com.google.android.gms.maps.model.Polyline polyline;
+	private final com.google.android.libraries.maps.model.Polyline polyline;
 
-	public PolylineAdapter(com.google.android.gms.maps.model.Polyline polyline) {
+	public PolylineAdapter(com.google.android.libraries.maps.model.Polyline polyline) {
 		this.polyline = polyline;
 	}
 

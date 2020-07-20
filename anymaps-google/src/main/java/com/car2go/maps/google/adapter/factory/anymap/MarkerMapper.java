@@ -8,7 +8,7 @@ package com.car2go.maps.google.adapter.factory.anymap;
 
 import com.car2go.maps.google.adapter.MarkerAdapter;
 import com.car2go.maps.google.adapter.factory.Mapper;
-import com.google.android.gms.maps.model.Marker;
+import com.google.android.libraries.maps.model.Marker;
 
 /**
  * Maps Google Marker to AnyMap Marker

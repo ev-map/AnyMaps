@@ -7,7 +7,7 @@
 package com.car2go.maps.google.adapter;
 
 import com.car2go.maps.model.LatLng;
-import com.google.android.gms.maps.model.Polygon;
+import com.google.android.libraries.maps.model.Polygon;
 
 import org.junit.Before;
 import org.junit.Test;

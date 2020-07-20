@@ -14,9 +14,9 @@ import com.car2go.maps.model.VisibleRegion;
  */
 public class ProjectionAdapter implements Projection {
 
-	private final com.google.android.gms.maps.Projection projection;
+	private final com.google.android.libraries.maps.Projection projection;
 
-	public ProjectionAdapter(com.google.android.gms.maps.Projection projection) {
+	public ProjectionAdapter(com.google.android.libraries.maps.Projection projection) {
 		this.projection = projection;
 	}
 

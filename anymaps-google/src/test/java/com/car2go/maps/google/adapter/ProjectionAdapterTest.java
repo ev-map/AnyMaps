@@ -6,8 +6,8 @@
 
 package com.car2go.maps.google.adapter;
 
-import com.google.android.gms.maps.Projection;
-import com.google.android.gms.maps.model.VisibleRegion;
+import com.google.android.libraries.maps.Projection;
+import com.google.android.libraries.maps.model.VisibleRegion;
 
 import org.junit.Before;
 import org.junit.Test;

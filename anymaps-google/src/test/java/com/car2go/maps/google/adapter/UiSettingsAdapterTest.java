@@ -6,7 +6,7 @@
 
 package com.car2go.maps.google.adapter;
 
-import com.google.android.gms.maps.UiSettings;
+import com.google.android.libraries.maps.UiSettings;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

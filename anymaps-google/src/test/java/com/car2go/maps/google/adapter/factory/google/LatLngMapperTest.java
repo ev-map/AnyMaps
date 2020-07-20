@@ -21,7 +21,7 @@ public class LatLngMapperTest {
 		LatLng input = new LatLng(10, 10);
 
 		// When
-		com.google.android.gms.maps.model.LatLng output = mapper.map(input);
+		com.google.android.libraries.maps.model.LatLng output = mapper.map(input);
 
 		// Then
 		TestUtil.assertEquals(input, output);

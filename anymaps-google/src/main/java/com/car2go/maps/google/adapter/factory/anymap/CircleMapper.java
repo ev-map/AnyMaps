@@ -8,7 +8,7 @@ package com.car2go.maps.google.adapter.factory.anymap;
 
 import com.car2go.maps.google.adapter.CircleAdapter;
 import com.car2go.maps.google.adapter.factory.Mapper;
-import com.google.android.gms.maps.model.Circle;
+import com.google.android.libraries.maps.model.Circle;
 
 /**
  * Maps Google Circle to AnyMap Circle

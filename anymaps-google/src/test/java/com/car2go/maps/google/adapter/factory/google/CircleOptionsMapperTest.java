@@ -29,7 +29,7 @@ public class CircleOptionsMapperTest {
 				.strokeWidth(5);
 
 		// When
-		com.google.android.gms.maps.model.CircleOptions output = mapper.map(input);
+		com.google.android.libraries.maps.model.CircleOptions output = mapper.map(input);
 
 		// Then
 		TestUtil.assertEquals(

@@ -25,7 +25,7 @@ public class LatLngBoundsMapperTest {
 		);
 
 		// When
-		com.google.android.gms.maps.model.LatLngBounds output = mapper.map(input);
+		com.google.android.libraries.maps.model.LatLngBounds output = mapper.map(input);
 
 		// Then
 		TestUtil.assertEquals(

@@ -15,15 +15,15 @@ import com.car2go.maps.AnyMap;
 import com.car2go.maps.MapContainerView;
 import com.car2go.maps.OnMapReadyCallback;
 import com.car2go.maps.google.adapter.GoogleMapAdapter;
-import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.GoogleMapOptions;
+import com.google.android.libraries.maps.GoogleMap;
+import com.google.android.libraries.maps.GoogleMapOptions;
 
 /**
  * @see com.car2go.maps.MapContainerView
  */
 public class MapView extends MapContainerView {
 
-	private com.google.android.gms.maps.MapView mapView;
+	private com.google.android.libraries.maps.MapView mapView;
 
 	private AnyMap map;
 
@@ -42,7 +42,7 @@ public class MapView extends MapContainerView {
 	private void initView(Context context, AttributeSet attrs) {
 		GoogleMapOptions googleMapOptions = readOptions(context, attrs);
 
-		mapView = new com.google.android.gms.maps.MapView(context, googleMapOptions);
+		mapView = new com.google.android.libraries.maps.MapView(context, googleMapOptions);
 
 		addView(mapView);
 	}
@@ -73,7 +73,7 @@ public class MapView extends MapContainerView {
 			return;
 		}
 
-		mapView.getMapAsync(new com.google.android.gms.maps.OnMapReadyCallback() {
+		mapView.getMapAsync(new com.google.android.libraries.maps.OnMapReadyCallback() {
 			@Override
 			public void onMapReady(GoogleMap googleMap) {
 				if (map == null) {

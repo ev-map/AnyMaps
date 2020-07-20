@@ -6,8 +6,6 @@
 
 package com.car2go.maps.google.adapter;
 
-import androidx.annotation.NonNull;
-
 import com.car2go.maps.google.adapter.factory.Mapper;
 import com.car2go.maps.google.adapter.factory.anymap.CameraPositionMapper;
 import com.car2go.maps.google.adapter.factory.anymap.CircleMapper;
@@ -27,20 +25,22 @@ import com.car2go.maps.model.CircleOptions;
 import com.car2go.maps.model.MarkerOptions;
 import com.car2go.maps.model.PolygonOptions;
 import com.car2go.maps.model.PolylineOptions;
-import com.google.android.gms.maps.Projection;
-import com.google.android.gms.maps.UiSettings;
-import com.google.android.gms.maps.model.CameraPosition;
-import com.google.android.gms.maps.model.Circle;
-import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.LatLngBounds;
-import com.google.android.gms.maps.model.Marker;
-import com.google.android.gms.maps.model.Polygon;
-import com.google.android.gms.maps.model.Polyline;
-import com.google.android.gms.maps.model.VisibleRegion;
+import com.google.android.libraries.maps.Projection;
+import com.google.android.libraries.maps.UiSettings;
+import com.google.android.libraries.maps.model.CameraPosition;
+import com.google.android.libraries.maps.model.Circle;
+import com.google.android.libraries.maps.model.LatLng;
+import com.google.android.libraries.maps.model.LatLngBounds;
+import com.google.android.libraries.maps.model.Marker;
+import com.google.android.libraries.maps.model.Polygon;
+import com.google.android.libraries.maps.model.Polyline;
+import com.google.android.libraries.maps.model.VisibleRegion;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+
+import androidx.annotation.NonNull;
 
 /**
  * Utility for adapting Google entities to AnyMap and vice versa.

@@ -7,8 +7,8 @@
 package com.car2go.maps.google.adapter.factory.anymap;
 
 import com.car2go.maps.google.adapter.TestUtil;
-import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.LatLngBounds;
+import com.google.android.libraries.maps.model.LatLng;
+import com.google.android.libraries.maps.model.LatLngBounds;
 
 import org.junit.Test;
 

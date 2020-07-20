@@ -31,7 +31,7 @@ public class MapsConfiguration implements com.car2go.maps.MapsConfiguration {
 
 	@Override
 	public void initialize(Context context) {
-		com.google.android.gms.maps.MapsInitializer.initialize(context);
+		com.google.android.libraries.maps.MapsInitializer.initialize(context);
 	}
 
 	@Override

@@ -26,14 +26,14 @@ import com.car2go.maps.model.Polygon;
 import com.car2go.maps.model.PolygonOptions;
 import com.car2go.maps.model.Polyline;
 import com.car2go.maps.model.PolylineOptions;
-import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.MapStyleOptions;
+import com.google.android.libraries.maps.GoogleMap;
+import com.google.android.libraries.maps.model.LatLng;
+import com.google.android.libraries.maps.model.MapStyleOptions;
 
 import androidx.annotation.RequiresPermission;
 
 /**
- * Implementation of {@link AnyMap} which works with {@link com.google.android.gms.maps.GoogleMap}
+ * Implementation of {@link AnyMap} which works with {@link com.google.android.libraries.maps.GoogleMap}
  */
 public class GoogleMapAdapter implements AnyMap {
 
@@ -174,7 +174,7 @@ public class GoogleMapAdapter implements AnyMap {
 	public void setOnMarkerClickListener(final OnMarkerClickListener listener) {
 		map.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
 			@Override
-			public boolean onMarkerClick(com.google.android.gms.maps.model.Marker marker) {
+			public boolean onMarkerClick(com.google.android.libraries.maps.model.Marker marker) {
 				Marker anyMarker = AnyMapAdapter.adapt(marker);
 
 				return listener.onMarkerClick(anyMarker);
@@ -186,14 +186,14 @@ public class GoogleMapAdapter implements AnyMap {
 	public void setInfoWindowAdapter(final InfoWindowAdapter adapter) {
 		map.setInfoWindowAdapter(new GoogleMap.InfoWindowAdapter() {
 			@Override
-			public View getInfoWindow(com.google.android.gms.maps.model.Marker marker) {
+			public View getInfoWindow(com.google.android.libraries.maps.model.Marker marker) {
 				Marker anyMarker = AnyMapAdapter.adapt(marker);
 
 				return adapter.getInfoWindow(anyMarker);
 			}
 
 			@Override
-			public View getInfoContents(com.google.android.gms.maps.model.Marker marker) {
+			public View getInfoContents(com.google.android.libraries.maps.model.Marker marker) {
 				Marker anyMarker = AnyMapAdapter.adapt(marker);
 
 				return adapter.getInfoContents(anyMarker);

@@ -13,9 +13,9 @@ import com.car2go.maps.model.Circle;
  */
 public class CircleAdapter implements Circle {
 
-	private final com.google.android.gms.maps.model.Circle circle;
+	private final com.google.android.libraries.maps.model.Circle circle;
 
-	public CircleAdapter(com.google.android.gms.maps.model.Circle circle) {
+	public CircleAdapter(com.google.android.libraries.maps.model.Circle circle) {
 		this.circle = circle;
 	}
 

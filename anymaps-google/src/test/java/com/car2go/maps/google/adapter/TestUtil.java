@@ -13,7 +13,7 @@ import org.junit.Assert;
 public class TestUtil {
 
 	public static void assertEquals(LatLng expected,
-	                                com.google.android.gms.maps.model.LatLng actual) {
+	                                com.google.android.libraries.maps.model.LatLng actual) {
 		Assert.assertEquals(
 				expected.latitude,
 				actual.latitude,
@@ -27,7 +27,7 @@ public class TestUtil {
 		);
 	}
 
-	public static void assertEquals(com.google.android.gms.maps.model.LatLng expected,
+	public static void assertEquals(com.google.android.libraries.maps.model.LatLng expected,
 	                                LatLng actual) {
 		Assert.assertEquals(
 				expected.latitude,
