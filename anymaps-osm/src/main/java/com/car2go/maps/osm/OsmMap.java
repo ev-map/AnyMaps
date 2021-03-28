@@ -167,6 +167,11 @@ class OsmMap implements AnyMap {
     }
 
     @Override
+    public void setOnCameraMoveStartedListener(OnCameraMoveStartedListener listener) {
+        map.addMapListener(new OsmCameraMoveStartedListener(listener));
+    }
+
+    @Override
     public void setOnMarkerClickListener(OnMarkerClickListener listener) {
         drawableComponentFactory.setOnMarkerClickListener(listener);
     }
@@ -375,6 +380,36 @@ class OsmMap implements AnyMap {
 
         private void notifyListener() {
             listener.onCameraMove();
+        }
+
+    }
+
+    /**
+     * Listens for map position changes and delegates them
+     * to {@link com.car2go.maps.AnyMap.OnCameraMoveStartedListener}
+     */
+    private class OsmCameraMoveStartedListener implements MapListener {
+
+        private final OnCameraMoveStartedListener listener;
+
+        private OsmCameraMoveStartedListener(OnCameraMoveStartedListener listener) {
+            this.listener = listener;
+        }
+
+        @Override
+        public boolean onScroll(ScrollEvent event) {
+            notifyListener();
+            return false;
+        }
+
+        @Override
+        public boolean onZoom(ZoomEvent event) {
+            notifyListener();
+            return false;
+        }
+
+        private void notifyListener() {
+            listener.onCameraMoveStarted(OnCameraMoveStartedListener.REASON_GESTURE);
         }
 
     }

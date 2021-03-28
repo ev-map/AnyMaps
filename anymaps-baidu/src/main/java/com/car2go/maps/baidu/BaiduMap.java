@@ -212,6 +212,26 @@ public class BaiduMap implements AnyMap {
 	}
 
 	@Override
+	public void setOnCameraMoveStartedListener(final OnCameraMoveStartedListener listener) {
+		map.setOnMapStatusChangeListener(new com.baidu.mapapi.map.BaiduMap.OnMapStatusChangeListener() {
+			@Override
+			public void onMapStatusChangeStart(MapStatus mapStatus) {
+				listener.onCameraMoveStarted(OnCameraMoveStartedListener.REASON_GESTURE);
+			}
+
+			@Override
+			public void onMapStatusChange(MapStatus mapStatus) {
+
+			}
+
+			@Override
+			public void onMapStatusChangeFinish(MapStatus mapStatus) {
+
+			}
+		});
+	}
+
+	@Override
 	public void setOnMarkerClickListener(final OnMarkerClickListener listener) {
 		map.setOnMarkerClickListener(new com.baidu.mapapi.map.BaiduMap.OnMarkerClickListener() {
 			@Override

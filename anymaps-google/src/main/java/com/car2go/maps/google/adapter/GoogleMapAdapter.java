@@ -161,6 +161,16 @@ public class GoogleMapAdapter implements AnyMap {
 	}
 
 	@Override
+	public void setOnCameraMoveStartedListener(final OnCameraMoveStartedListener listener) {
+		map.setOnCameraMoveStartedListener(new GoogleMap.OnCameraMoveStartedListener() {
+			@Override
+			public void onCameraMoveStarted(int i) {
+				listener.onCameraMoveStarted(i);
+			}
+		});
+	}
+
+	@Override
 	public void setOnMarkerClickListener(final OnMarkerClickListener listener) {
 		map.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
 			@Override

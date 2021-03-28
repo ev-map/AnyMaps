@@ -56,6 +56,8 @@ public interface AnyMap {
 
 	void setOnCameraMoveListener(OnCameraMoveListener listener);
 
+	void setOnCameraMoveStartedListener(OnCameraMoveStartedListener listener);
+
 	void setOnMarkerClickListener(OnMarkerClickListener listener);
 
 	void setInfoWindowAdapter(InfoWindowAdapter adapter);
@@ -152,6 +154,15 @@ public interface AnyMap {
 
 		void onCameraMove();
 
+	}
+
+	interface OnCameraMoveStartedListener {
+
+		void onCameraMoveStarted(int reasonCode);
+
+		int REASON_GESTURE = 1;
+		int REASON_API_ANIMATION = 2;
+		int REASON_DEVELOPER_ANIMATION = 3;
 	}
 
 	interface OnMarkerClickListener {
