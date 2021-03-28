@@ -20,6 +20,11 @@ public interface CameraUpdateFactory {
 	CameraUpdate newLatLngZoom(LatLng latLng, float zoomLevel);
 
 	/**
+	 * @return {@link CameraUpdate} which moves camera to given position
+	 */
+	CameraUpdate newLatLng(LatLng latLng);
+
+	/**
 	 * @return {@link CameraUpdate} which moves camera so it displays given bounds with given padding.
 	 */
 	CameraUpdate newLatLngBounds(LatLngBounds bounds, int padding);

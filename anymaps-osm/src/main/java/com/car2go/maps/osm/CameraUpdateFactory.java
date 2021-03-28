@@ -33,6 +33,13 @@ public class CameraUpdateFactory implements com.car2go.maps.CameraUpdateFactory 
 	}
 
 	@Override
+	public CameraUpdate newLatLng(LatLng center) {
+		return new OsmCameraUpdate.Builder()
+				.center(center)
+				.build();
+	}
+
+	@Override
 	public CameraUpdate newLatLngBounds(LatLngBounds bounds, int padding) {
 		return new OsmCameraUpdate.Builder()
 				.bounds(bounds)

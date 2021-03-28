@@ -34,6 +34,13 @@ public class CameraUpdateFactory implements com.car2go.maps.CameraUpdateFactory 
 	}
 
 	@Override
+	public CameraUpdate newLatLng(LatLng center) {
+		return new BaiduCameraUpdate.Builder()
+				.center(center)
+				.build();
+	}
+
+	@Override
 	public CameraUpdate newLatLngBounds(LatLngBounds bounds, int padding) {
 		return new BaiduCameraUpdate.Builder()
 				.bounds(bounds)

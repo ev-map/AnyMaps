@@ -36,6 +36,17 @@ public class CameraUpdateFactory implements com.car2go.maps.CameraUpdateFactory 
 	}
 
 	@Override
+	public CameraUpdate newLatLng(LatLng latLng) {
+		com.mapbox.mapboxsdk.geometry.LatLng googleLatLng = anyMapAdapter.map(latLng);
+
+		return new CameraUpdateAdapter(
+				com.mapbox.mapboxsdk.camera.CameraUpdateFactory.newLatLng(
+						googleLatLng
+				)
+		);
+	}
+
+	@Override
 	public CameraUpdate newLatLngBounds(LatLngBounds bounds, int padding) {
 		com.mapbox.mapboxsdk.geometry.LatLngBounds googleBounds = anyMapAdapter.map(bounds);
 
