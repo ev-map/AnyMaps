@@ -9,18 +9,17 @@ package com.car2go.maps.mapbox.adapter;
 import android.graphics.Bitmap;
 
 import com.car2go.maps.model.BitmapDescriptor;
+import com.mapbox.mapboxsdk.annotations.Icon;
 
 /**
  * Adapts Mapbox BitmapDescriptor to AnyMap BitmapDescriptor
  */
 public class BitmapDescriptorAdapter implements BitmapDescriptor {
 
-	public final String id;
-	public final Bitmap bitmap;
+	public final Icon icon;
 
-	public BitmapDescriptorAdapter(String id, Bitmap bitmap) {
-		this.id = id;
-		this.bitmap = bitmap;
+	public BitmapDescriptorAdapter(Icon icon) {
+		this.icon = icon;
 	}
 
 }

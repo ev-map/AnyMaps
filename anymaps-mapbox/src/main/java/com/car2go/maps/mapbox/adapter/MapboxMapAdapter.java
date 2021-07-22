@@ -193,12 +193,11 @@ public class MapboxMapAdapter implements AnyMap, Style.OnStyleLoaded {
 
 	@Override
 	public void setOnMarkerClickListener(final OnMarkerClickListener listener) {
-		drawableComponentFactory.symbolManager.addClickListener(new OnSymbolClickListener() {
+		map.setOnMarkerClickListener(new MapboxMap.OnMarkerClickListener() {
 			@Override
-			public boolean onAnnotationClick(Symbol symbol) {
-				Marker marker = anyMapAdapter.map(symbol);
-				listener.onMarkerClick(marker);
-				return true;
+			public boolean onMarkerClick(@NonNull com.mapbox.mapboxsdk.annotations.Marker marker) {
+				Marker m = anyMapAdapter.map(marker);
+				return listener.onMarkerClick(m);
 			}
 		});
 	}
@@ -337,8 +336,6 @@ public class MapboxMapAdapter implements AnyMap, Style.OnStyleLoaded {
 				|| !map.getLocationComponent().isLocationComponentEnabled())) {
 			enableLocation();
 		}
-
-		style.addImagesAsync(bitmapDescriptorFactory.images);
 
 		if (callback != null) {
 			callback.onStyleLoaded(style);
