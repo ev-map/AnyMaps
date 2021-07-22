@@ -24,11 +24,6 @@ import com.mapbox.mapboxsdk.plugins.annotation.FillOptions;
 import com.mapbox.mapboxsdk.plugins.annotation.Line;
 import com.mapbox.mapboxsdk.plugins.annotation.LineManager;
 import com.mapbox.mapboxsdk.plugins.annotation.LineOptions;
-import com.mapbox.mapboxsdk.plugins.annotation.Symbol;
-import com.mapbox.mapboxsdk.plugins.annotation.SymbolManager;
-import com.mapbox.mapboxsdk.plugins.annotation.SymbolOptions;
-
-import static com.mapbox.mapboxsdk.style.layers.Property.ICON_ROTATION_ALIGNMENT_VIEWPORT;
 
 /**
  * Factory of {@link com.car2go.maps.model.DrawableComponent}. Created components are bound
@@ -38,7 +33,6 @@ public class DrawableComponentFactory {
 
 	private final MapboxMap map;
 	private final AnyMapAdapter anyMapAdapter;
-	public final SymbolManager symbolManager;
 	public final CircleManager circleManager;
 	public final LineManager lineManager;
 	public final FillManager fillManager;
@@ -46,9 +40,6 @@ public class DrawableComponentFactory {
 	public DrawableComponentFactory(AnyMapAdapter anyMapAdapter, MapboxMap map, MapView mapView, Style style) {
 		this.anyMapAdapter = anyMapAdapter;
 		this.map = map;
-		symbolManager = new SymbolManager(mapView, map, style);
-		symbolManager.setIconAllowOverlap(true);
-		symbolManager.setIconRotationAlignment(ICON_ROTATION_ALIGNMENT_VIEWPORT);
 
 		circleManager = new CircleManager(mapView, map, style);
 		lineManager = new LineManager(mapView, map, style);
@@ -61,16 +52,8 @@ public class DrawableComponentFactory {
 	 * @return added {@link Marker} which is bound to the map.
 	 */
 	public Marker addMarker(MarkerOptions options) {
-		SymbolOptions mapboxOptions = anyMapAdapter.map(options);
-
-		// ensure images are loaded (sometimes they aren't)
-		String imageId = mapboxOptions.getIconImage();
-		if (map.getStyle() != null && map.getStyle().getImage(imageId) == null) {
-			map.getStyle().addImagesAsync(anyMapAdapter.bitmapDescriptorFactory.images);
-		}
-
-		Symbol symbol = symbolManager.create(mapboxOptions);
-		return anyMapAdapter.map(symbol);
+		com.mapbox.mapboxsdk.annotations.MarkerOptions mapboxOptions = anyMapAdapter.map(options);
+		return anyMapAdapter.map(map.addMarker(mapboxOptions));
 	}
 
 	/**

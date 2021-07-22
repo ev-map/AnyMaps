@@ -18,7 +18,7 @@ import com.mapbox.mapboxsdk.plugins.annotation.SymbolOptions;
 /**
  * Maps AnyMap MarkerOptions to Google MarkerOptions
  */
-public class MarkerOptionsMapper implements Mapper<MarkerOptions, SymbolOptions> {
+public class MarkerOptionsMapper implements Mapper<MarkerOptions, com.mapbox.mapboxsdk.annotations.MarkerOptions> {
 
 	private final AnyMapAdapter anyMapAdapter;
 
@@ -27,22 +27,14 @@ public class MarkerOptionsMapper implements Mapper<MarkerOptions, SymbolOptions>
 	}
 
 	@Override
-	public SymbolOptions map(MarkerOptions input) {
+	public com.mapbox.mapboxsdk.annotations.MarkerOptions map(MarkerOptions input) {
 		LatLng mapboxLatLng = anyMapAdapter.map(input.getPosition());
 
 		DisplayMetrics dm = anyMapAdapter.context.getResources().getDisplayMetrics();
 		BitmapDescriptorAdapter icon = (BitmapDescriptorAdapter) input.getIcon();
-		Float[] offset = {
-				-input.getAnchorU() * icon.bitmap.getWidth() / dm.density,
-				-input.getAnchorV() * icon.bitmap.getHeight() / dm.density
-		};
-		return new SymbolOptions()
-				.withIconOpacity(input.isVisible() ? input.getAlpha() : 0f)
-				.withLatLng(mapboxLatLng)
-				.withIconAnchor("top-left")
-				.withIconOffset(offset)
-				.withIconImage(icon.id)
-				.withSymbolSortKey((float) input.getZ());
+		return new com.mapbox.mapboxsdk.annotations.MarkerOptions()
+				.position(mapboxLatLng)
+				.icon(icon.icon);
 	}
 
 }

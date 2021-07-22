@@ -11,6 +11,7 @@ import android.graphics.Bitmap;
 
 import com.car2go.maps.mapbox.adapter.BitmapDescriptorAdapter;
 import com.car2go.maps.model.BitmapDescriptor;
+import com.mapbox.mapboxsdk.annotations.IconFactory;
 import com.mapbox.mapboxsdk.exceptions.TooManyIconsException;
 import com.mapbox.mapboxsdk.maps.MapboxMap;
 import com.mapbox.mapboxsdk.utils.BitmapUtils;
@@ -26,34 +27,22 @@ public class BitmapDescriptorFactory implements com.car2go.maps.BitmapDescriptor
 
 	private final Context context;
 	private MapboxMap map;
-	private static final String ICON_ID_PREFIX = "com.car2go.maps.mapbox.icon_";
-	private int nextId = 0;
-	public final HashMap<String, Bitmap> images;
+	private IconFactory iconFactory;
 
 	public BitmapDescriptorFactory(Context context, MapboxMap map) {
 		this.context = context;
 		this.map = map;
-		this.images = new HashMap<>();
+		this.iconFactory = IconFactory.getInstance(context);
 	}
 
 	@Override
 	public BitmapDescriptor fromBitmap(Bitmap bitmap) {
-		if (nextId < 0) {
-			throw new TooManyIconsException();
-		}
-		String id = ICON_ID_PREFIX + ++nextId;
-		images.put(id, bitmap);
-		if (map.getStyle() != null) {
-			map.getStyle().addImage(id, bitmap);
-		}
-		return new BitmapDescriptorAdapter(id, bitmap);
+		return new BitmapDescriptorAdapter(iconFactory.fromBitmap(bitmap));
 	}
 
 	@Override
 	public BitmapDescriptor fromResource(@DrawableRes int resourceId) {
-		Bitmap bitmap = BitmapUtils.getBitmapFromDrawable(
-				BitmapUtils.getDrawableFromRes(context, resourceId));
-		return fromBitmap(bitmap);
+		return new BitmapDescriptorAdapter(iconFactory.fromResource(resourceId));
 	}
 
 }

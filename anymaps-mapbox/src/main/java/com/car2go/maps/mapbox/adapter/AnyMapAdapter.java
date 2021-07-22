@@ -90,7 +90,7 @@ public class AnyMapAdapter {
 				new UiSettingsMapper()
 		);
 		registerMapper(
-				Symbol.class,
+				com.mapbox.mapboxsdk.annotations.Marker.class,
 				new MarkerMapper(this)
 		);
 		registerMapper(

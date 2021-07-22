@@ -15,7 +15,7 @@ import com.mapbox.mapboxsdk.plugins.annotation.SymbolManager;
 /**
  * Maps Google Marker to AnyMap Marker
  */
-public class MarkerMapper implements Mapper<Symbol, com.car2go.maps.model.Marker> {
+public class MarkerMapper implements Mapper<com.mapbox.mapboxsdk.annotations.Marker, com.car2go.maps.model.Marker> {
 	private final AnyMapAdapter anyMapAdapter;
 
 	public MarkerMapper(AnyMapAdapter anyMapAdapter) {
@@ -23,8 +23,8 @@ public class MarkerMapper implements Mapper<Symbol, com.car2go.maps.model.Marker
 	}
 
 	@Override
-	public com.car2go.maps.model.Marker map(Symbol input) {
-		return new MarkerAdapter(input, anyMapAdapter.drawableComponentFactory.symbolManager, anyMapAdapter);
+	public com.car2go.maps.model.Marker map(com.mapbox.mapboxsdk.annotations.Marker input) {
+		return new MarkerAdapter(input, anyMapAdapter);
 	}
 
 }

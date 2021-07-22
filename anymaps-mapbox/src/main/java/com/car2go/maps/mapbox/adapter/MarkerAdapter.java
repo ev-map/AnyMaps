@@ -21,53 +21,43 @@ import com.mapbox.mapboxsdk.plugins.annotation.SymbolManager;
  */
 public class MarkerAdapter implements Marker {
 
-	private final Symbol marker;
-	private final SymbolManager manager;
+	private final com.mapbox.mapboxsdk.annotations.Marker marker;
 	private final AnyMapAdapter anyMapAdapter;
 
-	public MarkerAdapter(Symbol marker, SymbolManager manager, AnyMapAdapter anyMapAdapter) {
+	public MarkerAdapter(com.mapbox.mapboxsdk.annotations.Marker marker, AnyMapAdapter anyMapAdapter) {
 		this.marker = marker;
-		this.manager = manager;
 		this.anyMapAdapter = anyMapAdapter;
 	}
 
 	@Override
 	public void setIcon(BitmapDescriptor icon) {
 		BitmapDescriptorAdapter adapter = (BitmapDescriptorAdapter) icon;
-		marker.setIconImage(adapter.id);
-		update();
-	}
-
-	private void update() {
-		if (manager.getAnnotations().containsValue(marker)) {
-			manager.update(marker);
-		}
+		marker.setIcon(adapter.icon);
 	}
 
 	@Override
 	public LatLng getPosition() {
-		return anyMapAdapter.map(marker.getLatLng());
+		return anyMapAdapter.map(marker.getPosition());
 	}
 
 	@Override
 	public void showInfoWindow() {
+		// not supported
 	}
 
 	@Override
 	public void setRotation(float rotation) {
-		marker.setIconRotate(rotation);
-		update();
+		// not supported
 	}
 
 	@Override
 	public void setVisible(boolean visible) {
-		marker.setIconOpacity(visible ? 1f : 0f);
-		update();
+		// not supported
 	}
 
 	@Override
 	public void remove() {
-		manager.delete(marker);
+		marker.remove();
 	}
 
 	@Override
@@ -87,19 +77,11 @@ public class MarkerAdapter implements Marker {
 
 	@Override
 	public void setZ(int z) {
-		marker.setSymbolSortKey((float) z);
-		update();
+		// not supported
 	}
 
 	@Override
 	public void setAnchor(float u, float v) {
-		DisplayMetrics dm = anyMapAdapter.context.getResources().getDisplayMetrics();
-		Bitmap icon = anyMapAdapter.bitmapDescriptorFactory.images.get(marker.getIconImage());
-		if (icon != null) {
-			marker.setIconOffset(new PointF(
-					-u * icon.getWidth() / dm.density,
-					-v * icon.getHeight() / dm.density));
-			update();
-		}
+		// not supported
 	}
 }
