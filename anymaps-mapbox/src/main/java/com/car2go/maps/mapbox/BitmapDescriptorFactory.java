@@ -42,7 +42,9 @@ public class BitmapDescriptorFactory implements com.car2go.maps.BitmapDescriptor
 
 	@Override
 	public BitmapDescriptor fromResource(@DrawableRes int resourceId) {
-		return new BitmapDescriptorAdapter(iconFactory.fromResource(resourceId));
+		Bitmap bitmap = BitmapUtils.getBitmapFromDrawable(
+				BitmapUtils.getDrawableFromRes(context, resourceId));
+		return fromBitmap(bitmap);
 	}
 
 }
