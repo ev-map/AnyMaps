@@ -25,6 +25,11 @@ import com.mapbox.mapboxsdk.plugins.annotation.Line;
 import com.mapbox.mapboxsdk.plugins.annotation.LineManager;
 import com.mapbox.mapboxsdk.plugins.annotation.LineOptions;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 /**
  * Factory of {@link com.car2go.maps.model.DrawableComponent}. Created components are bound
  * to associated {@link MapboxMap}
@@ -36,6 +41,7 @@ public class DrawableComponentFactory {
 	public final CircleManager circleManager;
 	public final LineManager lineManager;
 	public final FillManager fillManager;
+	public final Map<Long, MarkerAdapter> markers;
 
 	public DrawableComponentFactory(AnyMapAdapter anyMapAdapter, MapboxMap map, MapView mapView, Style style) {
 		this.anyMapAdapter = anyMapAdapter;
@@ -44,6 +50,7 @@ public class DrawableComponentFactory {
 		circleManager = new CircleManager(mapView, map, style);
 		lineManager = new LineManager(mapView, map, style);
 		fillManager = new FillManager(mapView, map, style);
+		markers = new HashMap<>();
 	}
 
 	/**
@@ -53,7 +60,10 @@ public class DrawableComponentFactory {
 	 */
 	public Marker addMarker(MarkerOptions options) {
 		com.mapbox.mapboxsdk.annotations.MarkerOptions mapboxOptions = anyMapAdapter.map(options);
-		return anyMapAdapter.map(map.addMarker(mapboxOptions));
+		com.mapbox.mapboxsdk.annotations.Marker marker = map.addMarker(mapboxOptions);
+		MarkerAdapter markerAdapter = new MarkerAdapter(this, marker, map, anyMapAdapter, options.getAnchorU(), options.getAnchorV());
+		markers.put(marker.getId(), markerAdapter);
+		return markerAdapter;
 	}
 
 	/**
