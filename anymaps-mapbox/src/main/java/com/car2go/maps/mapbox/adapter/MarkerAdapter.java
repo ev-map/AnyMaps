@@ -8,25 +8,54 @@ package com.car2go.maps.mapbox.adapter;
 
 import android.graphics.Bitmap;
 import android.graphics.PointF;
-import android.util.DisplayMetrics;
 
 import com.car2go.maps.model.BitmapDescriptor;
 import com.car2go.maps.model.LatLng;
 import com.car2go.maps.model.Marker;
-import com.mapbox.mapboxsdk.plugins.annotation.Symbol;
-import com.mapbox.mapboxsdk.plugins.annotation.SymbolManager;
+import com.mapbox.mapboxsdk.annotations.Icon;
+import com.mapbox.mapboxsdk.maps.MapboxMap;
+import com.mapbox.mapboxsdk.maps.Projection;
 
 /**
  * Adapts Mapbox Marker to AnyMap Marker
  */
-public class MarkerAdapter implements Marker {
+public class MarkerAdapter implements Marker, MapboxMap.OnCameraMoveListener {
 
+	private DrawableComponentFactory drawableComponentFactory;
 	private final com.mapbox.mapboxsdk.annotations.Marker marker;
 	private final AnyMapAdapter anyMapAdapter;
+	private final MapboxMap map;
+	private com.mapbox.mapboxsdk.geometry.LatLng actualPosition;
+	private float anchorU;
+	private float anchorV;
 
-	public MarkerAdapter(com.mapbox.mapboxsdk.annotations.Marker marker, AnyMapAdapter anyMapAdapter) {
+	public MarkerAdapter(DrawableComponentFactory drawableComponentFactory, com.mapbox.mapboxsdk.annotations.Marker marker, MapboxMap map, AnyMapAdapter anyMapAdapter, float anchorU, float anchorV) {
+		this.drawableComponentFactory = drawableComponentFactory;
 		this.marker = marker;
 		this.anyMapAdapter = anyMapAdapter;
+		this.map = map;
+		this.actualPosition = marker.getPosition();
+		this.anchorU = anchorU;
+		this.anchorV = anchorV;
+
+		updateAnchor();
+		map.addOnCameraMoveListener(this);
+	}
+
+	private void updateAnchor() {
+		Projection projection = map.getProjection();
+		PointF screenPos = projection.toScreenLocation(actualPosition);
+		Icon icon = marker.getIcon();
+		if (icon != null) {
+			Bitmap bitmap = icon.getBitmap();
+			int height = bitmap.getHeight();
+			int width = bitmap.getWidth();
+
+			screenPos.x -= width * (anchorU - 0.5);
+			screenPos.y -= height * (anchorV - 0.5);
+
+			marker.setPosition(projection.fromScreenLocation(screenPos));
+		}
 	}
 
 	@Override
@@ -58,6 +87,8 @@ public class MarkerAdapter implements Marker {
 	@Override
 	public void remove() {
 		marker.remove();
+		map.removeOnCameraMoveListener(this);
+		drawableComponentFactory.markers.remove(this.marker.getId());
 	}
 
 	@Override
@@ -82,6 +113,13 @@ public class MarkerAdapter implements Marker {
 
 	@Override
 	public void setAnchor(float u, float v) {
-		// not supported
+		this.anchorU = u;
+		this.anchorV = v;
+		updateAnchor();
+	}
+
+	@Override
+	public void onCameraMove() {
+		updateAnchor();
 	}
 }

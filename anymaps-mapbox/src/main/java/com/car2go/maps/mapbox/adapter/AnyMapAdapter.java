@@ -16,7 +16,6 @@ import com.car2go.maps.mapbox.adapter.factory.anymap.CameraPositionMapper;
 import com.car2go.maps.mapbox.adapter.factory.anymap.CircleMapper;
 import com.car2go.maps.mapbox.adapter.factory.anymap.LatLngBoundsMapper;
 import com.car2go.maps.mapbox.adapter.factory.anymap.LatLngMapper;
-import com.car2go.maps.mapbox.adapter.factory.anymap.MarkerMapper;
 import com.car2go.maps.mapbox.adapter.factory.anymap.PolygonMapper;
 import com.car2go.maps.mapbox.adapter.factory.anymap.PolylineMapper;
 import com.car2go.maps.mapbox.adapter.factory.anymap.ProjectionMapper;
@@ -34,14 +33,12 @@ import com.mapbox.mapboxsdk.camera.CameraPosition;
 import com.mapbox.mapboxsdk.geometry.LatLng;
 import com.mapbox.mapboxsdk.geometry.LatLngBounds;
 import com.mapbox.mapboxsdk.geometry.VisibleRegion;
-import com.mapbox.mapboxsdk.maps.MapView;
 import com.mapbox.mapboxsdk.maps.MapboxMap;
 import com.mapbox.mapboxsdk.maps.Projection;
 import com.mapbox.mapboxsdk.maps.UiSettings;
 import com.mapbox.mapboxsdk.plugins.annotation.Circle;
 import com.mapbox.mapboxsdk.plugins.annotation.Fill;
 import com.mapbox.mapboxsdk.plugins.annotation.Line;
-import com.mapbox.mapboxsdk.plugins.annotation.Symbol;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -55,11 +52,13 @@ public class AnyMapAdapter {
 	private final HashMap<Class<?>, Mapper> mappers = new HashMap<>();
 	public final Context context;
 	public final BitmapDescriptorFactory bitmapDescriptorFactory;
+	private MapboxMap map;
 	public DrawableComponentFactory drawableComponentFactory;
 
-	public AnyMapAdapter(Context context, BitmapDescriptorFactory bitmapDescriptorFactory) {
+	public AnyMapAdapter(Context context, BitmapDescriptorFactory bitmapDescriptorFactory, MapboxMap map) {
 		this.context = context;
 		this.bitmapDescriptorFactory = bitmapDescriptorFactory;
+		this.map = map;
 		registerMapboxToAnyMapMappers();
 		registerAnyMapToMapboxMappers();
 	}
@@ -88,10 +87,6 @@ public class AnyMapAdapter {
 		registerMapper(
 				UiSettings.class,
 				new UiSettingsMapper()
-		);
-		registerMapper(
-				com.mapbox.mapboxsdk.annotations.Marker.class,
-				new MarkerMapper(this)
 		);
 		registerMapper(
 				Circle.class,

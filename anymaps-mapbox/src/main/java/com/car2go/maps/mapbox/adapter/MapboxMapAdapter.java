@@ -61,7 +61,7 @@ public class MapboxMapAdapter implements AnyMap, Style.OnStyleLoaded {
 
 		bitmapDescriptorFactory = new com.car2go.maps.mapbox.BitmapDescriptorFactory(context, map);
 		this.context = context;
-		this.anyMapAdapter = new AnyMapAdapter(context, bitmapDescriptorFactory);
+		this.anyMapAdapter = new AnyMapAdapter(context, bitmapDescriptorFactory, map);
 		this.cameraUpdateFactory = new com.car2go.maps.mapbox.CameraUpdateFactory(anyMapAdapter);
 
 		map.getUiSettings().setCompassGravity(Gravity.START | Gravity.TOP);
@@ -196,7 +196,7 @@ public class MapboxMapAdapter implements AnyMap, Style.OnStyleLoaded {
 		map.setOnMarkerClickListener(new MapboxMap.OnMarkerClickListener() {
 			@Override
 			public boolean onMarkerClick(@NonNull com.mapbox.mapboxsdk.annotations.Marker marker) {
-				Marker m = anyMapAdapter.map(marker);
+				Marker m = drawableComponentFactory.markers.get(marker.getId());
 				return listener.onMarkerClick(m);
 			}
 		});
