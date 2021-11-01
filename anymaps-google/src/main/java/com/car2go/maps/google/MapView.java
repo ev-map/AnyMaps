@@ -17,7 +17,6 @@ import com.car2go.maps.OnMapReadyCallback;
 import com.car2go.maps.google.adapter.GoogleMapAdapter;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.GoogleMapOptions;
-import com.google.android.gms.maps.MapsInitializer;
 
 /**
  * @see com.car2go.maps.MapContainerView
@@ -41,8 +40,6 @@ public class MapView extends MapContainerView {
 	}
 
 	private void initView(Context context, AttributeSet attrs) {
-		MapsInitializer.initialize(context.getApplicationContext(), MapsInitializer.Renderer.LATEST, null);
-
 		GoogleMapOptions googleMapOptions = readOptions(context, attrs);
 
 		mapView = new com.google.android.gms.maps.MapView(context, googleMapOptions);
