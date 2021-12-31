@@ -25,12 +25,16 @@ public class MainActivity extends AppCompatActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 
-		mapFragment = new MapFragment();
-		mapFragment.setPriority(new String[]{MapFragment.OSM});
-		getSupportFragmentManager()
-				.beginTransaction()
-				.replace(R.id.map, mapFragment)
-				.commit();
+		if (savedInstanceState == null) {
+			mapFragment = new MapFragment();
+			mapFragment.setPriority(new String[]{MapFragment.OSM});
+			getSupportFragmentManager()
+					.beginTransaction()
+					.replace(R.id.map, mapFragment, "map")
+					.commit();
+		} else {
+			mapFragment = (MapFragment) getSupportFragmentManager().findFragmentByTag("map");
+		}
 
 		mapFragment.getMapAsync(new OnMapReadyCallback() {
 			@Override

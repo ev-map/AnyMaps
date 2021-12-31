@@ -38,7 +38,11 @@ public class MapFragment extends Fragment {
 	@Nullable
 	@Override
 	public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-		map = createMap();
+		setRetainInstance(true);
+
+		if (map == null) {
+			map = createMap();
+		}
 		map.onCreate(savedInstanceState);
 
 		while (!waitingCallbacks.isEmpty()) {
