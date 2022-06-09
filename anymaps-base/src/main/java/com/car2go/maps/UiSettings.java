@@ -15,6 +15,8 @@ public interface UiSettings {
 
 	void setTiltGesturesEnabled(boolean enabled);
 
+	void setRotateGesturesEnabled(boolean enabled);
+
 	void setMyLocationButtonEnabled(boolean enabled);
 
 	void setMapToolbarEnabled(boolean enabled);

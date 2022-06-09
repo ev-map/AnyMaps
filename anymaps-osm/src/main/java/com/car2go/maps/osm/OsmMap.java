@@ -429,6 +429,10 @@ class OsmMap implements AnyMap {
             // Do nothing
         }
 
+        public void setRotateGesturesEnabled(boolean enabled) {
+            // Do nothing
+        }
+
         @Override
         public void setMyLocationButtonEnabled(boolean enabled) {
             // Do nothing

@@ -30,6 +30,11 @@ public class UiSettingsAdapter implements UiSettings {
 	}
 
 	@Override
+	public void setRotateGesturesEnabled(boolean enabled) {
+		uiSettings.setRotateGesturesEnabled(enabled);
+	}
+
+	@Override
 	public void setMyLocationButtonEnabled(boolean enabled) {
 		// do nothing
 	}
