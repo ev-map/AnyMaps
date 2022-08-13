@@ -133,30 +133,40 @@ public class MapFragment extends Fragment {
 	@Override
 	public void onResume() {
 		super.onResume();
-		map.onResume();
+		if (map != null) {
+			map.onResume();
+		}
 	}
 
 	@Override
 	public void onPause() {
 		super.onPause();
-		map.onPause();
+		if (map != null) {
+			map.onPause();
+		}
 	}
 
 	@Override
 	public void onDestroy() {
 		super.onDestroy();
-		map.onDestroy();
+		if (map != null) {
+			map.onDestroy();
+		}
 	}
 
 	@Override
 	public void onLowMemory() {
 		super.onLowMemory();
-		map.onLowMemory();
+		if (map != null) {
+			map.onLowMemory();
+		}
 	}
 
 	@Override
 	public void onSaveInstanceState(@NonNull Bundle outState) {
 		super.onSaveInstanceState(outState);
-		map.onSaveInstanceState(outState);
+		if (map != null) {
+			map.onSaveInstanceState(outState);
+		}
 	}
 }
