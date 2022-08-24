@@ -10,6 +10,7 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.os.Bundle;
 import android.util.AttributeSet;
+import android.util.TypedValue;
 
 import com.car2go.maps.AnyMap;
 import com.car2go.maps.MapContainerView;
@@ -17,6 +18,8 @@ import com.car2go.maps.OnMapReadyCallback;
 import com.car2go.maps.google.adapter.GoogleMapAdapter;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.GoogleMapOptions;
+
+import androidx.core.content.ContextCompat;
 
 /**
  * @see com.car2go.maps.MapContainerView
@@ -49,6 +52,11 @@ public class MapView extends MapContainerView {
 
 	private GoogleMapOptions readOptions(Context context, AttributeSet attrs) {
 		GoogleMapOptions options = new GoogleMapOptions();
+
+		TypedValue typedValue = new TypedValue();
+		context.getTheme().resolveAttribute(android.R.attr.colorBackground, typedValue, true);
+		int colorBackground = ContextCompat.getColor(context, typedValue.resourceId);
+		options.backgroundColor(colorBackground);
 
 		if (attrs == null) {
 			return options;
