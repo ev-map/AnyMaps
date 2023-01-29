@@ -31,8 +31,6 @@ import com.mapbox.mapboxsdk.location.LocationComponentActivationOptions;
 import com.mapbox.mapboxsdk.maps.MapView;
 import com.mapbox.mapboxsdk.maps.MapboxMap;
 import com.mapbox.mapboxsdk.maps.Style;
-import com.mapbox.mapboxsdk.plugins.annotation.OnSymbolClickListener;
-import com.mapbox.mapboxsdk.plugins.annotation.Symbol;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresPermission;
@@ -297,9 +295,6 @@ public class MapboxMapAdapter implements AnyMap, Style.OnStyleLoaded {
 
 	@Override
 	public void setPadding(int left, int top, int right, int bottom) {
-		map.moveCamera(
-				com.mapbox.mapboxsdk.camera.CameraUpdateFactory.paddingTo(left, top, right, bottom)
-		);
 		// emulate Google Maps behavior: default padding + custom padding
 		int base = context.getResources().getDimensionPixelSize(R.dimen.mapbox_four_dp);
 		map.getUiSettings().setCompassMargins(base, base + top, base + right, base);
