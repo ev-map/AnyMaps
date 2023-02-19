@@ -6,6 +6,9 @@
 
 package com.car2go.maps;
 
+import android.graphics.Point;
+
+import com.car2go.maps.model.LatLng;
 import com.car2go.maps.model.VisibleRegion;
 
 /**
@@ -15,4 +18,7 @@ public interface Projection {
 
 	VisibleRegion getVisibleRegion();
 
+	LatLng fromScreenLocation(Point point);
+
+	Point toScreenLocation(LatLng latLng);
 }

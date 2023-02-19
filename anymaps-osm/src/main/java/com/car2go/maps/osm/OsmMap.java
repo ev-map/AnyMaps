@@ -21,14 +21,12 @@ import com.car2go.maps.model.CameraPosition;
 import com.car2go.maps.model.Circle;
 import com.car2go.maps.model.CircleOptions;
 import com.car2go.maps.model.LatLng;
-import com.car2go.maps.model.LatLngBounds;
 import com.car2go.maps.model.Marker;
 import com.car2go.maps.model.MarkerOptions;
 import com.car2go.maps.model.Polygon;
 import com.car2go.maps.model.PolygonOptions;
 import com.car2go.maps.model.Polyline;
 import com.car2go.maps.model.PolylineOptions;
-import com.car2go.maps.model.VisibleRegion;
 import com.car2go.maps.osm.drawable.DrawableComponentFactory;
 
 import org.osmdroid.api.IGeoPoint;
@@ -101,20 +99,7 @@ class OsmMap implements AnyMap {
     public Projection getProjection() {
         org.osmdroid.views.Projection projection = map.getProjection();
 
-        return new OsmProjection(
-                new VisibleRegion(
-                        new LatLngBounds(
-                                new LatLng(
-                                        projection.getSouthWest().getLatitude(),
-                                        projection.getSouthWest().getLongitude()
-                                ),
-                                new LatLng(
-                                        projection.getNorthEast().getLatitude(),
-                                        projection.getNorthEast().getLongitude()
-                                )
-                        )
-                )
-        );
+        return new OsmProjection(projection);
     }
 
     @Override

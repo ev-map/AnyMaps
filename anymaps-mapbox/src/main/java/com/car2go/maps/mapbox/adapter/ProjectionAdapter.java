@@ -6,7 +6,11 @@
 
 package com.car2go.maps.mapbox.adapter;
 
+import android.graphics.Point;
+import android.graphics.PointF;
+
 import com.car2go.maps.Projection;
+import com.car2go.maps.model.LatLng;
 import com.car2go.maps.model.VisibleRegion;
 
 /**
@@ -25,6 +29,18 @@ public class ProjectionAdapter implements Projection {
 	@Override
 	public VisibleRegion getVisibleRegion() {
 		return anyMapAdapter.map(projection.getVisibleRegion());
+	}
+
+	@Override
+	public LatLng fromScreenLocation(Point point) {
+		return anyMapAdapter.map(projection.fromScreenLocation(new PointF(point.x, point.y)));
+	}
+
+	@Override
+	public Point toScreenLocation(LatLng latLng) {
+		com.mapbox.mapboxsdk.geometry.LatLng mapboxLatLng = anyMapAdapter.map(latLng);
+		PointF result = projection.toScreenLocation(mapboxLatLng);
+		return new Point(Math.round(result.x), Math.round(result.y));
 	}
 
 }
