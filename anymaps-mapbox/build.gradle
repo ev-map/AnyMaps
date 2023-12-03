@@ -31,7 +31,7 @@ android {
 dependencies {
     implementation project(':anymaps-base')
 
-    implementation('com.mapbox.mapboxsdk:mapbox-android-sdk:9.2.1') {
+    implementation('com.mapbox.mapboxsdk:mapbox-android-sdk:9.1.0-SNAPSHOT') {
         exclude group: 'com.mapbox.mapboxsdk', module: 'mapbox-android-accounts'
         exclude group: 'com.mapbox.mapboxsdk', module: 'mapbox-android-telemetry'
     }
