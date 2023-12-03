@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
 
 		if (savedInstanceState == null) {
 			mapFragment = new MapFragment();
-			mapFragment.setPriority(new String[]{MapFragment.OSM});
+			mapFragment.setPriority(new String[]{MapFragment.MAPLIBRE});
 			getSupportFragmentManager()
 					.beginTransaction()
 					.replace(R.id.map, mapFragment, "map")

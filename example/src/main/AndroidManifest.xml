@@ -24,7 +24,10 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="Your API key" />
         <meta-data
-            android:name="com.mapbox.ACCESS_TOKEN"
+            android:name="io.jawg.ACCESS_TOKEN"
+            android:value="Your API key" />
+        <meta-data
+            android:name="com.arcgis.ACCESS_TOKEN"
             android:value="Your API key" />
 
         <activity

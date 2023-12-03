@@ -11,7 +11,7 @@ android {
 
     defaultConfig {
         applicationId "com.car2go.example"
-        minSdkVersion 19
+        minSdkVersion 21
         targetSdkVersion 31
         versionCode 1
         versionName "1.0"
@@ -25,6 +25,10 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
 }
 
 dependencies {
@@ -32,7 +36,7 @@ dependencies {
 
     // If you are adding Google Maps support you also need to add Google Play Services
     implementation project(':anymaps-google')
-    implementation project(":anymaps-mapbox")
+    implementation project(':anymaps-maplibre')
     implementation project(':anymaps-osm')
 
     implementation 'com.google.android.gms:play-services-maps:18.0.0'

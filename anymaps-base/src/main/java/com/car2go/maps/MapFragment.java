@@ -29,9 +29,9 @@ public class MapFragment extends Fragment {
 	public static final String GOOGLE = "com.car2go.maps.google";
 	public static final String BAIDU = "com.car2go.maps.baidu";
 	public static final String OSM = "com.car2go.maps.osm";
-	public static final String MAPBOX = "com.car2go.maps.mapbox";
+	public static final String MAPLIBRE = "com.car2go.maps.maplibre";
 
-	private String[] priority = {GOOGLE, BAIDU, OSM, MAPBOX};
+	private String[] priority = {GOOGLE, BAIDU, OSM, MAPLIBRE};
 
 	private Queue<OnMapReadyCallback> waitingCallbacks = new LinkedList<>();
 
@@ -65,7 +65,7 @@ public class MapFragment extends Fragment {
 	 * <li>Google Maps ({@link #GOOGLE})
 	 * <li>Baidu Maps ({@link #BAIDU})
 	 * <li>OpenStreetMap (OSMDroid) ({@link #OSM})
-	 * <li>OpenStreetMap (Mapbox) ({@link #MAPBOX})
+	 * <li>OpenStreetMap (MapLibre) ({@link #MAPLIBRE})
 	 * </ul><p>
 	 * Only backends for which the corresponding AnyMaps library (e.g. anymaps-google) is available
 	 * will be used.
