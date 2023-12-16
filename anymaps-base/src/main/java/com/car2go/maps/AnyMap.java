@@ -76,6 +76,8 @@ public interface AnyMap {
 
 	void onUserLocationChanged(LatLng location, float accuracy);
 
+	void setOnMapLoadedCallback(OnMapLoadedCallback callback);
+
 	BitmapDescriptorFactory getBitmapDescriptorFactory();
 
 	CameraUpdateFactory getCameraUpdateFactory();
@@ -193,6 +195,10 @@ public interface AnyMap {
 
 		View getInfoContents(Marker marker);
 
+	}
+
+	interface OnMapLoadedCallback {
+		void onMapLoaded();
 	}
 
 }

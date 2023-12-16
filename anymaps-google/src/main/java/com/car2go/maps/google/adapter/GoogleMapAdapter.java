@@ -274,6 +274,20 @@ public class GoogleMapAdapter implements AnyMap {
 		return com.car2go.maps.google.CameraUpdateFactory.getInstance();
 	}
 
+	@Override
+	public void setOnMapLoadedCallback(final OnMapLoadedCallback callback) {
+		if (callback != null) {
+			map.setOnMapLoadedCallback(new GoogleMap.OnMapLoadedCallback() {
+				@Override
+				public void onMapLoaded() {
+					callback.onMapLoaded();
+				}
+			});
+		} else {
+			map.setOnMapLoadedCallback(null);
+		}
+	}
+
 	/**
 	 * Delegates callbacks from Google map to given AnyMap callback
 	 */

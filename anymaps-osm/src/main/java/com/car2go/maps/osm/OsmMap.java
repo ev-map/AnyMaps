@@ -212,6 +212,11 @@ class OsmMap implements AnyMap {
     }
 
     @Override
+    public void setOnMapLoadedCallback(OnMapLoadedCallback callback) {
+        // not supported
+    }
+
+    @Override
     public BitmapDescriptorFactory getBitmapDescriptorFactory() {
         return com.car2go.maps.osm.BitmapDescriptorFactory.getInstance();
     }

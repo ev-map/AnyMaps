@@ -308,6 +308,11 @@ public class MapboxMapAdapter implements AnyMap, Style.OnStyleLoaded {
 	}
 
 	@Override
+	public void setOnMapLoadedCallback(OnMapLoadedCallback callback) {
+		// not supported
+	}
+
+	@Override
 	public BitmapDescriptorFactory getBitmapDescriptorFactory() {
 		return bitmapDescriptorFactory;
 	}
