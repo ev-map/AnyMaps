@@ -31,6 +31,7 @@ import com.mapbox.mapboxsdk.location.LocationComponentActivationOptions;
 import com.mapbox.mapboxsdk.maps.MapView;
 import com.mapbox.mapboxsdk.maps.MapboxMap;
 import com.mapbox.mapboxsdk.maps.Style;
+import com.mapbox.mapboxsdk.plugins.traffic.TrafficPlugin;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresPermission;
@@ -52,6 +53,7 @@ public class MapboxMapAdapter implements AnyMap, Style.OnStyleLoaded {
 	private boolean traffic = false;
 	private boolean location = false;
 	public com.mapbox.mapboxsdk.maps.Style.OnStyleLoaded callback = null;
+	private TrafficPlugin trafficPlugin = null;
 
 	public MapboxMapAdapter(MapboxMap map, MapView mapView, Context context) {
 		this.map = map;
@@ -208,7 +210,9 @@ public class MapboxMapAdapter implements AnyMap, Style.OnStyleLoaded {
 	@Override
 	public void setTrafficEnabled(boolean enabled) {
 		traffic = enabled;
-		updateMapStyle();
+		if (this.trafficPlugin != null) {
+			this.trafficPlugin.setVisibility(enabled);
+		}
 	}
 
 	private void updateMapStyle() {
@@ -230,18 +234,10 @@ public class MapboxMapAdapter implements AnyMap, Style.OnStyleLoaded {
 				break;
 			case NORMAL:
 			default:
-				if (traffic) {
-					if (mapStyle == Style.DARK) {
-						style = com.mapbox.mapboxsdk.maps.Style.TRAFFIC_NIGHT;
-					} else {
-						style = com.mapbox.mapboxsdk.maps.Style.TRAFFIC_DAY;
-					}
+				if (mapStyle == Style.DARK) {
+					style = com.mapbox.mapboxsdk.maps.Style.DARK;
 				} else {
-					if (mapStyle == Style.DARK) {
-						style = com.mapbox.mapboxsdk.maps.Style.DARK;
-					} else {
-						style = com.mapbox.mapboxsdk.maps.Style.MAPBOX_STREETS;
-					}
+					style = com.mapbox.mapboxsdk.maps.Style.MAPBOX_STREETS;
 				}
 				break;
 		}
@@ -326,6 +322,9 @@ public class MapboxMapAdapter implements AnyMap, Style.OnStyleLoaded {
 	public void onStyleLoaded(@NonNull com.mapbox.mapboxsdk.maps.Style style1) {
 		com.mapbox.mapboxsdk.maps.Style style = map.getStyle();
 		if (style == null || !style.isFullyLoaded()) return;
+
+		this.trafficPlugin = new TrafficPlugin(mapView, map, style);
+		this.trafficPlugin.setVisibility(this.traffic);
 
 		if (this.drawableComponentFactory == null) {
 			this.drawableComponentFactory = new DrawableComponentFactory(this.anyMapAdapter, map, mapView, style);
