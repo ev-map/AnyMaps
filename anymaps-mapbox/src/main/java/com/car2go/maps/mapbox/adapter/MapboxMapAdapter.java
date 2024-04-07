@@ -71,33 +71,49 @@ public class MapboxMapAdapter implements AnyMap, Style.OnStyleLoaded {
 
 	@Override
 	public void moveCamera(CameraUpdate cameraUpdate) {
-		map.moveCamera(
-				((CameraUpdateAdapter) cameraUpdate).wrappedCameraUpdate
-		);
+		if (cameraUpdate instanceof ScrollByCameraUpdateAdapter) {
+			map.scrollBy(((ScrollByCameraUpdateAdapter) cameraUpdate).distanceX, ((ScrollByCameraUpdateAdapter) cameraUpdate).distanceY);
+		} else {
+			map.moveCamera(
+					((CameraUpdateAdapter) cameraUpdate).wrappedCameraUpdate
+			);
+		}
 	}
 
 	@Override
 	public void animateCamera(CameraUpdate cameraUpdate) {
-		map.animateCamera(
-				((CameraUpdateAdapter) cameraUpdate).wrappedCameraUpdate
-		);
+		if (cameraUpdate instanceof ScrollByCameraUpdateAdapter) {
+			map.scrollBy(((ScrollByCameraUpdateAdapter) cameraUpdate).distanceX, ((ScrollByCameraUpdateAdapter) cameraUpdate).distanceY, 300);
+		} else {
+			map.animateCamera(
+					((CameraUpdateAdapter) cameraUpdate).wrappedCameraUpdate
+			);
+		}
 	}
 
 	@Override
 	public void animateCamera(CameraUpdate cameraUpdate, CancelableCallback callback) {
-		map.animateCamera(
-				((CameraUpdateAdapter) cameraUpdate).wrappedCameraUpdate,
-				new CancellableCallbackAdapter(callback)
-		);
+		if (cameraUpdate instanceof ScrollByCameraUpdateAdapter) {
+			map.scrollBy(((ScrollByCameraUpdateAdapter) cameraUpdate).distanceX, ((ScrollByCameraUpdateAdapter) cameraUpdate).distanceY, 300);
+		} else {
+			map.animateCamera(
+					((CameraUpdateAdapter) cameraUpdate).wrappedCameraUpdate,
+					new CancellableCallbackAdapter(callback)
+			);
+		}
 	}
 
 	@Override
 	public void animateCamera(CameraUpdate cameraUpdate, int duration, final CancelableCallback callback) {
-		map.animateCamera(
-				((CameraUpdateAdapter) cameraUpdate).wrappedCameraUpdate,
-				duration,
-				new CancellableCallbackAdapter(callback)
-		);
+		if (cameraUpdate instanceof ScrollByCameraUpdateAdapter) {
+			map.scrollBy(((ScrollByCameraUpdateAdapter) cameraUpdate).distanceX, ((ScrollByCameraUpdateAdapter) cameraUpdate).distanceY, duration);
+		} else {
+			map.animateCamera(
+					((CameraUpdateAdapter) cameraUpdate).wrappedCameraUpdate,
+					duration,
+					new CancellableCallbackAdapter(callback)
+			);
+		}
 	}
 
 	@Override

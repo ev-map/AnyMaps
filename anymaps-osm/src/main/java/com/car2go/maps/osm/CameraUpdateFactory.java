@@ -6,6 +6,8 @@
 
 package com.car2go.maps.osm;
 
+import android.graphics.Point;
+
 import com.car2go.maps.CameraUpdate;
 import com.car2go.maps.model.LatLng;
 import com.car2go.maps.model.LatLngBounds;
@@ -52,6 +54,21 @@ public class CameraUpdateFactory implements com.car2go.maps.CameraUpdateFactory 
 		return new OsmCameraUpdate.Builder()
 				.zoom(zoomLevel)
 				.build();
+	}
+
+	@Override
+	public CameraUpdate scrollBy(float distanceX, float distanceY) {
+		throw new UnsupportedOperationException("not implemented");
+	}
+
+	@Override
+	public CameraUpdate zoomBy(float amount) {
+		throw new UnsupportedOperationException("not implemented");
+	}
+
+	@Override
+	public CameraUpdate zoomBy(float amount, Point focus) {
+		throw new UnsupportedOperationException("not implemented");
 	}
 
 }

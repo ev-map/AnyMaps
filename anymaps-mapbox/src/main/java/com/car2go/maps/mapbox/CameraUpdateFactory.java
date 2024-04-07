@@ -6,9 +6,12 @@
 
 package com.car2go.maps.mapbox;
 
+import android.graphics.Point;
+
 import com.car2go.maps.CameraUpdate;
 import com.car2go.maps.mapbox.adapter.AnyMapAdapter;
 import com.car2go.maps.mapbox.adapter.CameraUpdateAdapter;
+import com.car2go.maps.mapbox.adapter.ScrollByCameraUpdateAdapter;
 import com.car2go.maps.model.LatLng;
 import com.car2go.maps.model.LatLngBounds;
 
@@ -64,6 +67,21 @@ public class CameraUpdateFactory implements com.car2go.maps.CameraUpdateFactory 
 				// mapbox zoom levels are shifted by one
 				com.mapbox.mapboxsdk.camera.CameraUpdateFactory.zoomTo(zoomLevel - 1)
 		);
+	}
+
+	@Override
+	public CameraUpdate scrollBy(float distanceX, float distanceY) {
+		return new ScrollByCameraUpdateAdapter(distanceX, distanceY);
+	}
+
+	@Override
+	public CameraUpdate zoomBy(float amount) {
+		return new CameraUpdateAdapter(com.mapbox.mapboxsdk.camera.CameraUpdateFactory.zoomBy(amount));
+	}
+
+	@Override
+	public CameraUpdate zoomBy(float amount, Point focus) {
+		return new CameraUpdateAdapter(com.mapbox.mapboxsdk.camera.CameraUpdateFactory.zoomBy(amount, focus));
 	}
 
 }

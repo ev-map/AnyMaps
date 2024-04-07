@@ -20,3 +20,5 @@ public class CameraUpdateAdapter implements CameraUpdate {
 	}
 
 }
+
+

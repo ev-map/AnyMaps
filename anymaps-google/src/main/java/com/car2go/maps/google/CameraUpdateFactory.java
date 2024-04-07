@@ -6,6 +6,8 @@
 
 package com.car2go.maps.google;
 
+import android.graphics.Point;
+
 import com.car2go.maps.CameraUpdate;
 import com.car2go.maps.google.adapter.AnyMapAdapter;
 import com.car2go.maps.google.adapter.CameraUpdateAdapter;
@@ -65,6 +67,27 @@ public class CameraUpdateFactory implements com.car2go.maps.CameraUpdateFactory 
 	public CameraUpdate zoomTo(float zoomLevel) {
 		return new CameraUpdateAdapter(
 				com.google.android.gms.maps.CameraUpdateFactory.zoomTo(zoomLevel)
+		);
+	}
+
+	@Override
+	public CameraUpdate scrollBy(float distanceX, float distanceY) {
+		return new CameraUpdateAdapter(
+				com.google.android.gms.maps.CameraUpdateFactory.scrollBy(distanceX, distanceY)
+		);
+	}
+
+	@Override
+	public CameraUpdate zoomBy(float amount) {
+		return new CameraUpdateAdapter(
+				com.google.android.gms.maps.CameraUpdateFactory.zoomBy(amount)
+		);
+	}
+
+	@Override
+	public CameraUpdate zoomBy(float amount, Point focus) {
+		return new CameraUpdateAdapter(
+				com.google.android.gms.maps.CameraUpdateFactory.zoomBy(amount, focus)
 		);
 	}
 

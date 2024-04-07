@@ -6,6 +6,8 @@
 
 package com.car2go.maps;
 
+import android.graphics.Point;
+
 import com.car2go.maps.model.LatLng;
 import com.car2go.maps.model.LatLngBounds;
 
@@ -33,4 +35,10 @@ public interface CameraUpdateFactory {
 	 * @return {@link CameraUpdate} which zooms camera to given zoom level.
 	 */
 	CameraUpdate zoomTo(float zoomLevel);
+
+	CameraUpdate scrollBy(float distanceX, float distanceY);
+
+	CameraUpdate zoomBy(float amount);
+
+	CameraUpdate zoomBy(float amount, Point focus);
 }
