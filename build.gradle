@@ -17,9 +17,6 @@ buildscript {
     repositories {
         jcenter()
         google()
-        maven {
-            url = uri("https://maven.pkg.github.com/ev-map/mapbox-gl-native-android")
-        }
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:4.0.1'
@@ -31,6 +28,9 @@ buildscript {
 
 allprojects {
     repositories {
+        maven {
+            url = uri("https://raw.githubusercontent.com/ev-map/mapbox-gl-native-android/mvn")
+        }
         jcenter()
         mavenCentral()
         google()
