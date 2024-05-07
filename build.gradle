@@ -28,11 +28,8 @@ buildscript {
 
 allprojects {
     repositories {
-        maven {
-            url = uri("https://raw.githubusercontent.com/ev-map/mapbox-gl-native-android/mvn")
-        }
-        jcenter()
         mavenCentral()
+        jcenter()
         google()
     }
     group = 'com.car2go.anylibs'

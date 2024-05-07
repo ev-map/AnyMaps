@@ -30,16 +30,17 @@ import com.car2go.maps.model.Polygon;
 import com.car2go.maps.model.PolygonOptions;
 import com.car2go.maps.model.Polyline;
 import com.car2go.maps.model.PolylineOptions;
-import com.mapbox.mapboxsdk.attribution.Attribution;
-import com.mapbox.mapboxsdk.geometry.LatLng;
-import com.mapbox.mapboxsdk.location.LocationComponentActivationOptions;
-import com.mapbox.mapboxsdk.maps.AttributionDialogManager;
-import com.mapbox.mapboxsdk.maps.MapView;
-import com.mapbox.mapboxsdk.maps.MapboxMap;
-import com.mapbox.mapboxsdk.maps.Style;
-import com.mapbox.mapboxsdk.style.layers.RasterLayer;
-import com.mapbox.mapboxsdk.style.sources.RasterSource;
-import com.mapbox.mapboxsdk.style.sources.TileSet;
+
+import org.maplibre.android.attribution.Attribution;
+import org.maplibre.android.geometry.LatLng;
+import org.maplibre.android.location.LocationComponentActivationOptions;
+import org.maplibre.android.maps.AttributionDialogManager;
+import org.maplibre.android.maps.MapLibreMap;
+import org.maplibre.android.maps.MapView;
+import org.maplibre.android.maps.Style;
+import org.maplibre.android.style.layers.RasterLayer;
+import org.maplibre.android.style.sources.RasterSource;
+import org.maplibre.android.style.sources.TileSet;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
@@ -50,11 +51,11 @@ import androidx.annotation.NonNull;
 import androidx.annotation.RequiresPermission;
 
 /**
- * Implementation of {@link AnyMap} which works with {@link MapboxMap}
+ * Implementation of {@link AnyMap} which works with {@link MapLibreMap}
  */
 public class MapLibreMapAdapter implements AnyMap, Style.OnStyleLoaded {
 
-	private final MapboxMap map;
+	private final MapLibreMap map;
 	private final MapView mapView;
 	private DrawableComponentFactory drawableComponentFactory;
 	private final com.car2go.maps.maplibre.BitmapDescriptorFactory bitmapDescriptorFactory;
@@ -65,12 +66,12 @@ public class MapLibreMapAdapter implements AnyMap, Style.OnStyleLoaded {
 	private Style mapStyle = Style.NORMAL;
 	private String currentStyleUrl = null;
 	private boolean location = false;
-	public com.mapbox.mapboxsdk.maps.Style.OnStyleLoaded callback = null;
+	public org.maplibre.android.maps.Style.OnStyleLoaded callback = null;
 	private final String jawgAccessToken;
 	private final String arcgisAccessToken;
 	private double[] padding = {0.0, 0.0, 0.0, 0.0};
 
-	public MapLibreMapAdapter(final MapboxMap map, MapView mapView, Context context) {
+	public MapLibreMapAdapter(final MapLibreMap map, MapView mapView, Context context) {
 		this.map = map;
 		this.mapView = mapView;
 
@@ -181,7 +182,7 @@ public class MapLibreMapAdapter implements AnyMap, Style.OnStyleLoaded {
 
 	@Override
 	public void setOnMapClickListener(final OnMapClickListener listener) {
-		map.addOnMapClickListener(new MapboxMap.OnMapClickListener() {
+		map.addOnMapClickListener(new MapLibreMap.OnMapClickListener() {
 			@Override
 			public boolean onMapClick(@NonNull LatLng latLng) {
 				com.car2go.maps.model.LatLng anyLatLng = anyMapAdapter.map(latLng);
@@ -194,7 +195,7 @@ public class MapLibreMapAdapter implements AnyMap, Style.OnStyleLoaded {
 
 	@Override
 	public void setOnMapLongClickListener(final OnMapLongClickListener listener) {
-		map.addOnMapLongClickListener(new MapboxMap.OnMapLongClickListener() {
+		map.addOnMapLongClickListener(new MapLibreMap.OnMapLongClickListener() {
 			@Override
 			public boolean onMapLongClick(@NonNull LatLng latLng) {
 				com.car2go.maps.model.LatLng anyLatLng = anyMapAdapter.map(latLng);
@@ -207,7 +208,7 @@ public class MapLibreMapAdapter implements AnyMap, Style.OnStyleLoaded {
 
 	@Override
 	public void setOnCameraIdleListener(final OnCameraIdleListener listener) {
-		map.addOnCameraIdleListener(new MapboxMap.OnCameraIdleListener() {
+		map.addOnCameraIdleListener(new MapLibreMap.OnCameraIdleListener() {
 			@Override
 			public void onCameraIdle() {
 				listener.onCameraIdle();
@@ -217,7 +218,7 @@ public class MapLibreMapAdapter implements AnyMap, Style.OnStyleLoaded {
 
 	@Override
 	public void setOnCameraMoveListener(final OnCameraMoveListener listener) {
-		map.addOnCameraMoveListener(new MapboxMap.OnCameraMoveListener() {
+		map.addOnCameraMoveListener(new MapLibreMap.OnCameraMoveListener() {
 			@Override
 			public void onCameraMove() {
 				listener.onCameraMove();
@@ -227,7 +228,7 @@ public class MapLibreMapAdapter implements AnyMap, Style.OnStyleLoaded {
 
 	@Override
 	public void setOnCameraMoveStartedListener(final OnCameraMoveStartedListener listener) {
-		map.addOnCameraMoveStartedListener(new MapboxMap.OnCameraMoveStartedListener() {
+		map.addOnCameraMoveStartedListener(new MapLibreMap.OnCameraMoveStartedListener() {
 			@Override
 			public void onCameraMoveStarted(int reason) {
 				listener.onCameraMoveStarted(reason);
@@ -237,9 +238,9 @@ public class MapLibreMapAdapter implements AnyMap, Style.OnStyleLoaded {
 
 	@Override
 	public void setOnMarkerClickListener(final OnMarkerClickListener listener) {
-		map.setOnMarkerClickListener(new MapboxMap.OnMarkerClickListener() {
+		map.setOnMarkerClickListener(new MapLibreMap.OnMarkerClickListener() {
 			@Override
-			public boolean onMarkerClick(@NonNull com.mapbox.mapboxsdk.annotations.Marker marker) {
+			public boolean onMarkerClick(@NonNull org.maplibre.android.annotations.Marker marker) {
 				Marker m = drawableComponentFactory.markers.get(marker.getId());
 				return listener.onMarkerClick(m);
 			}
@@ -318,7 +319,7 @@ public class MapLibreMapAdapter implements AnyMap, Style.OnStyleLoaded {
 			map.getLocationComponent().activateLocationComponent(options);
 			map.getLocationComponent().setLocationComponentEnabled(true);
 			// Padding has to be set again after enabling location
-			map.moveCamera(com.mapbox.mapboxsdk.camera.CameraUpdateFactory.paddingTo(padding));
+			map.moveCamera(org.maplibre.android.camera.CameraUpdateFactory.paddingTo(padding));
 		}
 	}
 
@@ -345,7 +346,7 @@ public class MapLibreMapAdapter implements AnyMap, Style.OnStyleLoaded {
 		padding[1] = top;
 		padding[2] = right;
 		padding[3] = bottom;
-		map.moveCamera(com.mapbox.mapboxsdk.camera.CameraUpdateFactory.paddingTo(padding));
+		map.moveCamera(org.maplibre.android.camera.CameraUpdateFactory.paddingTo(padding));
 	}
 
 	@Override
@@ -393,8 +394,8 @@ public class MapLibreMapAdapter implements AnyMap, Style.OnStyleLoaded {
 	}
 
 	@Override
-	public void onStyleLoaded(@NonNull com.mapbox.mapboxsdk.maps.Style style1) {
-		com.mapbox.mapboxsdk.maps.Style style = map.getStyle();
+	public void onStyleLoaded(@NonNull org.maplibre.android.maps.Style style1) {
+		org.maplibre.android.maps.Style style = map.getStyle();
 		if (style == null || !style.isFullyLoaded()) return;
 
 		if (style.getSource("satellite-v1") != null && arcgisAccessToken != null) {
@@ -424,7 +425,7 @@ public class MapLibreMapAdapter implements AnyMap, Style.OnStyleLoaded {
 	/**
 	 * Delegates callbacks from Google map to given AnyMap callback
 	 */
-	private static class CancellableCallbackAdapter implements MapboxMap.CancelableCallback {
+	private static class CancellableCallbackAdapter implements MapLibreMap.CancelableCallback {
 
 		private final CancelableCallback callback;
 

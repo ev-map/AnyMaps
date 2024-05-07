@@ -13,9 +13,9 @@ import com.car2go.maps.UiSettings;
  */
 public class UiSettingsAdapter implements UiSettings {
 
-	private final com.mapbox.mapboxsdk.maps.UiSettings uiSettings;
+	private final org.maplibre.android.maps.UiSettings uiSettings;
 
-	public UiSettingsAdapter(com.mapbox.mapboxsdk.maps.UiSettings uiSettings) {
+	public UiSettingsAdapter(org.maplibre.android.maps.UiSettings uiSettings) {
 		this.uiSettings = uiSettings;
 	}
 

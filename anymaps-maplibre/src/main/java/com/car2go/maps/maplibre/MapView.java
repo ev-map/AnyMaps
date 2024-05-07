@@ -15,8 +15,9 @@ import com.car2go.maps.AnyMap;
 import com.car2go.maps.MapContainerView;
 import com.car2go.maps.OnMapReadyCallback;
 import com.car2go.maps.maplibre.adapter.MapLibreMapAdapter;
-import com.mapbox.mapboxsdk.maps.MapboxMap;
-import com.mapbox.mapboxsdk.maps.MapboxMapOptions;
+
+import org.maplibre.android.maps.MapLibreMap;
+import org.maplibre.android.maps.MapLibreMapOptions;
 
 import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
@@ -26,7 +27,7 @@ import androidx.core.content.ContextCompat;
  */
 public class MapView extends MapContainerView {
 
-	private com.mapbox.mapboxsdk.maps.MapView mapView;
+	private org.maplibre.android.maps.MapView mapView;
 
 	private AnyMap map;
 
@@ -43,14 +44,14 @@ public class MapView extends MapContainerView {
 	}
 
 	private void initView(Context context, AttributeSet attrs) {
-		MapboxMapOptions options = MapboxMapOptions.createFromAttributes(context, attrs);
+		MapLibreMapOptions options = MapLibreMapOptions.createFromAttributes(context, attrs);
 
 		TypedValue typedValue = new TypedValue();
 		context.getTheme().resolveAttribute(android.R.attr.colorBackground, typedValue, true);
 		int colorBackground = ContextCompat.getColor(context, typedValue.resourceId);
 
 		options.foregroundLoadColor(colorBackground);
-		mapView = new com.mapbox.mapboxsdk.maps.MapView(context, options);
+		mapView = new org.maplibre.android.maps.MapView(context, options);
 
 		addView(mapView);
 	}
@@ -62,11 +63,11 @@ public class MapView extends MapContainerView {
 			return;
 		}
 
-		mapView.getMapAsync(new com.mapbox.mapboxsdk.maps.OnMapReadyCallback() {
+		mapView.getMapAsync(new org.maplibre.android.maps.OnMapReadyCallback() {
 			@Override
-			public void onMapReady(@NonNull MapboxMap mapboxMap) {
+			public void onMapReady(@NonNull MapLibreMap MapLibreMap) {
 				if (map == null) {
-					MapView.this.map = new MapLibreMapAdapter(mapboxMap, mapView, getContext());
+					MapView.this.map = new MapLibreMapAdapter(MapLibreMap, mapView, getContext());
 					callback.onMapReady(map);
 				}
 			}
