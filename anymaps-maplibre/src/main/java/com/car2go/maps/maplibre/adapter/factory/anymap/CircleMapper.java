@@ -9,7 +9,8 @@ package com.car2go.maps.maplibre.adapter.factory.anymap;
 import com.car2go.maps.maplibre.adapter.AnyMapAdapter;
 import com.car2go.maps.maplibre.adapter.CircleAdapter;
 import com.car2go.maps.maplibre.adapter.factory.Mapper;
-import com.mapbox.mapboxsdk.plugins.annotation.Circle;
+
+import org.maplibre.android.plugins.annotation.Circle;
 
 /**
  * Maps Google Circle to AnyMap Circle
