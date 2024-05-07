@@ -324,6 +324,7 @@ public class MapLibreMapAdapter implements AnyMap, Style.OnStyleLoaded {
 		map.getUiSettings().setCompassMargins(base, base + top, base + right, base);
 		map.getUiSettings().setAttributionMargins(base + left, base, base, base + bottom);
 		map.getUiSettings().setLogoMargins(base + left, base, base, base + bottom);
+		map.getUiSettings().setLogoEnabled(false);
 	}
 
 	@Override
