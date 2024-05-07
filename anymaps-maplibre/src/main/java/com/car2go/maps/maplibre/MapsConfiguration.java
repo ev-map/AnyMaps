@@ -9,7 +9,8 @@ package com.car2go.maps.maplibre;
 import android.content.Context;
 
 import com.car2go.maps.AnyMap;
-import com.mapbox.mapboxsdk.Mapbox;
+
+import org.maplibre.android.MapLibre;
 
 import java.util.Set;
 
@@ -32,7 +33,7 @@ public class MapsConfiguration implements com.car2go.maps.MapsConfiguration {
 
 	@Override
 	public void initialize(Context context) {
-		Mapbox.getInstance(context);
+		MapLibre.getInstance(context);
 	}
 
 	@Override

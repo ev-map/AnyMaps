@@ -10,14 +10,15 @@ import com.car2go.maps.maplibre.adapter.AnyMapAdapter;
 import com.car2go.maps.maplibre.adapter.ColorUtils;
 import com.car2go.maps.maplibre.adapter.factory.Mapper;
 import com.car2go.maps.model.PolylineOptions;
-import com.mapbox.mapboxsdk.geometry.LatLng;
+
+import org.maplibre.android.geometry.LatLng;
 
 import java.util.List;
 
 /**
  * Maps AnyMap PolylineOptions to Google PolylineOptions
  */
-public class PolylineOptionsMapper implements Mapper<PolylineOptions, com.mapbox.mapboxsdk.plugins.annotation.LineOptions> {
+public class PolylineOptionsMapper implements Mapper<PolylineOptions, org.maplibre.android.plugins.annotation.LineOptions> {
 
 	private final AnyMapAdapter anyMapAdapter;
 
@@ -26,10 +27,10 @@ public class PolylineOptionsMapper implements Mapper<PolylineOptions, com.mapbox
 	}
 
 	@Override
-	public com.mapbox.mapboxsdk.plugins.annotation.LineOptions map(PolylineOptions input) {
+	public org.maplibre.android.plugins.annotation.LineOptions map(PolylineOptions input) {
 		List<LatLng> points = anyMapAdapter.mapList(com.car2go.maps.model.LatLng.class, input.getPoints());
 
-		return new com.mapbox.mapboxsdk.plugins.annotation.LineOptions()
+		return new org.maplibre.android.plugins.annotation.LineOptions()
 				.withLineColor(ColorUtils.toHex(input.getColor()))
 				.withLineWidth(input.getWidth())
 				.withLatLngs(points);
