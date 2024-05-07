@@ -11,9 +11,10 @@ import android.graphics.Bitmap;
 
 import com.car2go.maps.maplibre.adapter.BitmapDescriptorAdapter;
 import com.car2go.maps.model.BitmapDescriptor;
-import com.mapbox.mapboxsdk.annotations.IconFactory;
-import com.mapbox.mapboxsdk.maps.MapboxMap;
-import com.mapbox.mapboxsdk.utils.BitmapUtils;
+
+import org.maplibre.android.annotations.IconFactory;
+import org.maplibre.android.maps.MapLibreMap;
+import org.maplibre.android.utils.BitmapUtils;
 
 import androidx.annotation.DrawableRes;
 
@@ -25,7 +26,7 @@ public class BitmapDescriptorFactory implements com.car2go.maps.BitmapDescriptor
 	private final Context context;
 	private IconFactory iconFactory;
 
-	public BitmapDescriptorFactory(Context context, MapboxMap map) {
+	public BitmapDescriptorFactory(Context context, MapLibreMap map) {
 		this.context = context;
 		this.iconFactory = IconFactory.getInstance(context);
 	}

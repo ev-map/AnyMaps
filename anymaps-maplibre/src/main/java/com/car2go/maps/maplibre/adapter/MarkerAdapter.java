@@ -12,24 +12,25 @@ import android.graphics.PointF;
 import com.car2go.maps.model.BitmapDescriptor;
 import com.car2go.maps.model.LatLng;
 import com.car2go.maps.model.Marker;
-import com.mapbox.mapboxsdk.annotations.Icon;
-import com.mapbox.mapboxsdk.maps.MapboxMap;
-import com.mapbox.mapboxsdk.maps.Projection;
+
+import org.maplibre.android.annotations.Icon;
+import org.maplibre.android.maps.MapLibreMap;
+import org.maplibre.android.maps.Projection;
 
 /**
  * Adapts Mapbox Marker to AnyMap Marker
  */
-public class MarkerAdapter implements Marker, MapboxMap.OnCameraMoveListener {
+public class MarkerAdapter implements Marker, MapLibreMap.OnCameraMoveListener {
 
 	private DrawableComponentFactory drawableComponentFactory;
-	private final com.mapbox.mapboxsdk.annotations.Marker marker;
+	private final org.maplibre.android.annotations.Marker marker;
 	private final AnyMapAdapter anyMapAdapter;
-	private final MapboxMap map;
-	private com.mapbox.mapboxsdk.geometry.LatLng actualPosition;
+	private final MapLibreMap map;
+	private org.maplibre.android.geometry.LatLng actualPosition;
 	private float anchorU;
 	private float anchorV;
 
-	public MarkerAdapter(DrawableComponentFactory drawableComponentFactory, com.mapbox.mapboxsdk.annotations.Marker marker, MapboxMap map, AnyMapAdapter anyMapAdapter, float anchorU, float anchorV) {
+	public MarkerAdapter(DrawableComponentFactory drawableComponentFactory, org.maplibre.android.annotations.Marker marker, MapLibreMap map, AnyMapAdapter anyMapAdapter, float anchorU, float anchorV) {
 		this.drawableComponentFactory = drawableComponentFactory;
 		this.marker = marker;
 		this.anyMapAdapter = anyMapAdapter;

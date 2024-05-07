@@ -14,7 +14,8 @@ import com.car2go.maps.maplibre.adapter.CameraUpdateAdapter;
 import com.car2go.maps.maplibre.adapter.ScrollByCameraUpdateAdapter;
 import com.car2go.maps.model.LatLng;
 import com.car2go.maps.model.LatLngBounds;
-import com.mapbox.mapboxsdk.camera.CameraPosition;
+
+import org.maplibre.android.camera.CameraPosition;
 
 /**
  * Creates {@link CameraUpdate} objects which can be used to update map camera
@@ -29,10 +30,10 @@ public class CameraUpdateFactory implements com.car2go.maps.CameraUpdateFactory 
 
 	@Override
 	public CameraUpdate newLatLngZoom(LatLng latLng, float zoomLevel) {
-		com.mapbox.mapboxsdk.geometry.LatLng googleLatLng = anyMapAdapter.map(latLng);
+		org.maplibre.android.geometry.LatLng googleLatLng = anyMapAdapter.map(latLng);
 
 		return new CameraUpdateAdapter(
-				com.mapbox.mapboxsdk.camera.CameraUpdateFactory.newLatLngZoom(
+				org.maplibre.android.camera.CameraUpdateFactory.newLatLngZoom(
 						googleLatLng,
 						zoomLevel - 1  // mapbox zoom levels are shifted by one
 				)
@@ -41,10 +42,10 @@ public class CameraUpdateFactory implements com.car2go.maps.CameraUpdateFactory 
 
 	@Override
 	public CameraUpdate newLatLng(LatLng latLng) {
-		com.mapbox.mapboxsdk.geometry.LatLng googleLatLng = anyMapAdapter.map(latLng);
+		org.maplibre.android.geometry.LatLng googleLatLng = anyMapAdapter.map(latLng);
 
 		return new CameraUpdateAdapter(
-				com.mapbox.mapboxsdk.camera.CameraUpdateFactory.newLatLng(
+				org.maplibre.android.camera.CameraUpdateFactory.newLatLng(
 						googleLatLng
 				)
 		);
@@ -52,10 +53,10 @@ public class CameraUpdateFactory implements com.car2go.maps.CameraUpdateFactory 
 
 	@Override
 	public CameraUpdate newLatLngBounds(LatLngBounds bounds, int padding) {
-		com.mapbox.mapboxsdk.geometry.LatLngBounds googleBounds = anyMapAdapter.map(bounds);
+		org.maplibre.android.geometry.LatLngBounds googleBounds = anyMapAdapter.map(bounds);
 
 		return new CameraUpdateAdapter(
-				com.mapbox.mapboxsdk.camera.CameraUpdateFactory.newLatLngBounds(
+				org.maplibre.android.camera.CameraUpdateFactory.newLatLngBounds(
 						googleBounds,
 						padding
 				)
@@ -66,7 +67,7 @@ public class CameraUpdateFactory implements com.car2go.maps.CameraUpdateFactory 
 	public CameraUpdate zoomTo(float zoomLevel) {
 		return new CameraUpdateAdapter(
 				// mapbox zoom levels are shifted by one
-				com.mapbox.mapboxsdk.camera.CameraUpdateFactory.zoomTo(zoomLevel - 1)
+				org.maplibre.android.camera.CameraUpdateFactory.zoomTo(zoomLevel - 1)
 		);
 	}
 
@@ -78,18 +79,18 @@ public class CameraUpdateFactory implements com.car2go.maps.CameraUpdateFactory 
 
 	@Override
 	public CameraUpdate zoomBy(float amount) {
-		return new CameraUpdateAdapter(com.mapbox.mapboxsdk.camera.CameraUpdateFactory.zoomBy(amount));
+		return new CameraUpdateAdapter(org.maplibre.android.camera.CameraUpdateFactory.zoomBy(amount));
 	}
 
 	@Override
 	public CameraUpdate zoomBy(float amount, Point focus) {
-		return new CameraUpdateAdapter(com.mapbox.mapboxsdk.camera.CameraUpdateFactory.zoomBy(amount, focus));
+		return new CameraUpdateAdapter(org.maplibre.android.camera.CameraUpdateFactory.zoomBy(amount, focus));
 	}
 
 	@Override
 	public CameraUpdate newLatLngZoomBearing(LatLng latLng, float zoomLevel, float bearing) {
 		return new CameraUpdateAdapter(
-				com.mapbox.mapboxsdk.camera.CameraUpdateFactory.newCameraPosition(
+				org.maplibre.android.camera.CameraUpdateFactory.newCameraPosition(
 						new CameraPosition.Builder()
 								.target(anyMapAdapter.map(latLng))
 								.zoom(zoomLevel - 1)  // mapbox zoom levels are shifted by one
