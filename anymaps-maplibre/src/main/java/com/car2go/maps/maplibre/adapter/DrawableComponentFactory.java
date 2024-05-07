@@ -18,13 +18,6 @@ import com.car2go.maps.model.PolylineOptions;
 import org.maplibre.android.maps.MapLibreMap;
 import org.maplibre.android.maps.MapView;
 import org.maplibre.android.maps.Style;
-import org.maplibre.android.plugins.annotation.CircleManager;
-import org.maplibre.android.plugins.annotation.Fill;
-import org.maplibre.android.plugins.annotation.FillManager;
-import org.maplibre.android.plugins.annotation.FillOptions;
-import org.maplibre.android.plugins.annotation.Line;
-import org.maplibre.android.plugins.annotation.LineManager;
-import org.maplibre.android.plugins.annotation.LineOptions;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -37,18 +30,15 @@ public class DrawableComponentFactory {
 
 	private final MapLibreMap map;
 	private final AnyMapAdapter anyMapAdapter;
-	public final CircleManager circleManager;
-	public final LineManager lineManager;
-	public final FillManager fillManager;
 	public final Map<Long, MarkerAdapter> markers;
 
 	public DrawableComponentFactory(AnyMapAdapter anyMapAdapter, MapLibreMap map, MapView mapView, Style style) {
 		this.anyMapAdapter = anyMapAdapter;
 		this.map = map;
 
-		circleManager = new CircleManager(mapView, map, style);
+		/*circleManager = new CircleManager(mapView, map, style);
 		lineManager = new LineManager(mapView, map, style);
-		fillManager = new FillManager(mapView, map, style);
+		fillManager = new FillManager(mapView, map, style);*/
 		markers = new HashMap<>();
 	}
 
@@ -71,9 +61,10 @@ public class DrawableComponentFactory {
 	 * @return added {@link Circle} which is bound to the map
 	 */
 	public Circle addCircle(CircleOptions options) {
-		org.maplibre.android.plugins.annotation.CircleOptions mapboxOptions = anyMapAdapter.map(options);
+		/*org.maplibre.android.plugins.annotation.CircleOptions mapboxOptions = anyMapAdapter.map(options);
 		org.maplibre.android.plugins.annotation.Circle circle = circleManager.create(mapboxOptions);
-		return anyMapAdapter.map(circle);
+		return anyMapAdapter.map(circle);*/
+		return null;
 	}
 
 	/**
@@ -82,9 +73,10 @@ public class DrawableComponentFactory {
 	 * @return added {@link Polygon} which is bound to the map
 	 */
 	public Polygon addPolygon(PolygonOptions options) {
-		FillOptions mapboxOptions = anyMapAdapter.map(options);
+		/*FillOptions mapboxOptions = anyMapAdapter.map(options);
 		Fill polygon = fillManager.create(mapboxOptions);
-		return anyMapAdapter.map(polygon);
+		return anyMapAdapter.map(polygon);*/
+		return null;
 	}
 
 	/**
@@ -93,8 +85,9 @@ public class DrawableComponentFactory {
 	 * @return added {@link Polyline} which is bound to the map
 	 */
 	public Polyline addPolyline(PolylineOptions options) {
-		LineOptions mapboxOptions = anyMapAdapter.map(options);
+		/*LineOptions mapboxOptions = anyMapAdapter.map(options);
 		Line line = lineManager.create(mapboxOptions);
-		return anyMapAdapter.map(line);
+		return anyMapAdapter.map(line);*/
+		return null;
 	}
 }
