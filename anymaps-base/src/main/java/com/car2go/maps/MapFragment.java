@@ -13,8 +13,10 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import java.lang.reflect.InvocationTargetException;
+import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.Queue;
+import java.util.Set;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -32,6 +34,7 @@ public class MapFragment extends Fragment {
 	public static final String MAPLIBRE = "com.car2go.maps.maplibre";
 
 	private String[] priority = {GOOGLE, BAIDU, OSM, MAPLIBRE};
+	private Set<AnyMap.Feature> supportedFeatures = new HashSet<>();
 
 	private Queue<OnMapReadyCallback> waitingCallbacks = new LinkedList<>();
 
@@ -57,6 +60,10 @@ public class MapFragment extends Fragment {
 			// onCreate was not called yet, add callback to queue
 			waitingCallbacks.add(callback);
 		}
+	}
+
+	public Set<AnyMap.Feature> getSupportedFeatures() {
+		return supportedFeatures;
 	}
 
 	/**
@@ -97,6 +104,7 @@ public class MapFragment extends Fragment {
 				try {
 					MapsConfiguration config = (MapsConfiguration) clazz.getMethod("getInstance").invoke(null);
 					config.initialize(requireContext());
+					supportedFeatures = config.getSupportedFeatures();
 
 					Class<MapContainerView> mapClass = getMapClass(name);
 					return mapClass.getConstructor(Context.class).newInstance(getContext());
