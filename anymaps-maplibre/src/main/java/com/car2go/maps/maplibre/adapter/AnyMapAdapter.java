@@ -11,13 +11,22 @@ import android.content.Context;
 import com.car2go.maps.maplibre.BitmapDescriptorFactory;
 import com.car2go.maps.maplibre.adapter.factory.Mapper;
 import com.car2go.maps.maplibre.adapter.factory.anymap.CameraPositionMapper;
+import com.car2go.maps.maplibre.adapter.factory.anymap.CircleMapper;
 import com.car2go.maps.maplibre.adapter.factory.anymap.LatLngBoundsMapper;
 import com.car2go.maps.maplibre.adapter.factory.anymap.LatLngMapper;
+import com.car2go.maps.maplibre.adapter.factory.anymap.PolygonMapper;
+import com.car2go.maps.maplibre.adapter.factory.anymap.PolylineMapper;
 import com.car2go.maps.maplibre.adapter.factory.anymap.ProjectionMapper;
 import com.car2go.maps.maplibre.adapter.factory.anymap.UiSettingsMapper;
 import com.car2go.maps.maplibre.adapter.factory.anymap.VisibleRegionMapper;
+import com.car2go.maps.maplibre.adapter.factory.mapbox.CircleOptionsMapper;
 import com.car2go.maps.maplibre.adapter.factory.mapbox.MarkerOptionsMapper;
+import com.car2go.maps.maplibre.adapter.factory.mapbox.PolygonOptionsMapper;
+import com.car2go.maps.maplibre.adapter.factory.mapbox.PolylineOptionsMapper;
+import com.car2go.maps.model.CircleOptions;
 import com.car2go.maps.model.MarkerOptions;
+import com.car2go.maps.model.PolygonOptions;
+import com.car2go.maps.model.PolylineOptions;
 
 import org.maplibre.android.camera.CameraPosition;
 import org.maplibre.android.geometry.LatLng;
@@ -77,7 +86,7 @@ public class AnyMapAdapter {
 				UiSettings.class,
 				new UiSettingsMapper()
 		);
-		/*registerMapper(
+		registerMapper(
 				Circle.class,
 				new CircleMapper(this)
 		);
@@ -88,7 +97,7 @@ public class AnyMapAdapter {
 		registerMapper(
 				Line.class,
 				new PolylineMapper(this)
-		);*/
+		);
 	}
 
 	private void registerAnyMapToMapLibreMappers() {
@@ -104,7 +113,7 @@ public class AnyMapAdapter {
 				MarkerOptions.class,
 				new MarkerOptionsMapper(this)
 		);
-		/*registerMapper(
+		registerMapper(
 				CircleOptions.class,
 				new CircleOptionsMapper(this)
 		);
@@ -115,7 +124,7 @@ public class AnyMapAdapter {
 		registerMapper(
 				PolylineOptions.class,
 				new PolylineOptionsMapper(this)
-		);*/
+		);
 	}
 
 	/**
