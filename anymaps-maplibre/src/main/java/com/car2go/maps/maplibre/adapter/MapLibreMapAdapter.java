@@ -30,6 +30,7 @@ import com.car2go.maps.model.Polygon;
 import com.car2go.maps.model.PolygonOptions;
 import com.car2go.maps.model.Polyline;
 import com.car2go.maps.model.PolylineOptions;
+import com.mapbox.mapboxsdk.attribution.Attribution;
 import com.mapbox.mapboxsdk.geometry.LatLng;
 import com.mapbox.mapboxsdk.location.LocationComponentActivationOptions;
 import com.mapbox.mapboxsdk.maps.AttributionDialogManager;
@@ -39,6 +40,11 @@ import com.mapbox.mapboxsdk.maps.Style;
 import com.mapbox.mapboxsdk.style.layers.RasterLayer;
 import com.mapbox.mapboxsdk.style.sources.RasterSource;
 import com.mapbox.mapboxsdk.style.sources.TileSet;
+
+import java.lang.reflect.Field;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresPermission;
@@ -333,7 +339,22 @@ public class MapLibreMapAdapter implements AnyMap, Style.OnStyleLoaded {
 	public void setAttributionClickListener(final AttributionClickListener listener) {
 		map.getUiSettings().setAttributionDialogManager(new AttributionDialogManager(context, map) {
 			protected void showAttributionDialog(@NonNull String[] attributionTitles) {
-				listener.onClick(attributionTitles, this);
+				try {
+					Field field = this.getClass().getSuperclass().getDeclaredField("attributionSet");
+					field.setAccessible(true);
+					Set<Attribution> attributionSet = (Set<Attribution>) field.get(this);
+
+					List<AttributionClickListener.Attribution> attributions = new ArrayList<>();
+					for (Attribution attr : attributionSet) {
+						attributions.add(new AttributionClickListener.Attribution(attr.getTitle(), attr.getUrl()));
+					}
+
+					listener.onClick(attributions);
+				} catch (IllegalAccessException e) {
+					throw new RuntimeException(e);
+				} catch (NoSuchFieldException e) {
+					throw new RuntimeException(e);
+				}
 			}
 		});
 	}
