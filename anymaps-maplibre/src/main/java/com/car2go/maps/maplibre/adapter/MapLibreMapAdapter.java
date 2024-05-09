@@ -71,6 +71,7 @@ public class MapLibreMapAdapter implements AnyMap, Style.OnStyleLoaded {
 		this.cameraUpdateFactory = new com.car2go.maps.maplibre.CameraUpdateFactory(anyMapAdapter);
 
 		map.getUiSettings().setCompassGravity(Gravity.START | Gravity.TOP);
+		map.getUiSettings().setLogoEnabled(false);
 
 		ApplicationInfo app;
 		try {
@@ -324,7 +325,7 @@ public class MapLibreMapAdapter implements AnyMap, Style.OnStyleLoaded {
 		map.getUiSettings().setCompassMargins(base, base + top, base + right, base);
 		map.getUiSettings().setAttributionMargins(base + left, base, base, base + bottom);
 		map.getUiSettings().setLogoMargins(base + left, base, base, base + bottom);
-		map.getUiSettings().setLogoEnabled(false);
+		map.moveCamera(org.maplibre.android.camera.CameraUpdateFactory.paddingTo(left, top, right, bottom));
 	}
 
 	@Override
