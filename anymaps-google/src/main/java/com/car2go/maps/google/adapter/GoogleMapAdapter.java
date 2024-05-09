@@ -11,6 +11,7 @@ import android.content.Context;
 import android.view.View;
 
 import com.car2go.maps.AnyMap;
+import com.car2go.maps.AttributionClickListener;
 import com.car2go.maps.BitmapDescriptorFactory;
 import com.car2go.maps.CameraUpdate;
 import com.car2go.maps.CameraUpdateFactory;
@@ -272,6 +273,11 @@ public class GoogleMapAdapter implements AnyMap {
 	@Override
 	public CameraUpdateFactory getCameraUpdateFactory() {
 		return com.car2go.maps.google.CameraUpdateFactory.getInstance();
+	}
+
+	@Override
+	public void setAttributionClickListener(AttributionClickListener listener) {
+		//Do nothing
 	}
 
 	@Override

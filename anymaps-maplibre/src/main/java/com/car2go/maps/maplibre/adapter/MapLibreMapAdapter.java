@@ -14,6 +14,7 @@ import android.os.Bundle;
 import android.view.Gravity;
 
 import com.car2go.maps.AnyMap;
+import com.car2go.maps.AttributionClickListener;
 import com.car2go.maps.BitmapDescriptorFactory;
 import com.car2go.maps.CameraUpdate;
 import com.car2go.maps.CameraUpdateFactory;
@@ -32,6 +33,7 @@ import com.car2go.maps.model.PolylineOptions;
 
 import org.maplibre.android.geometry.LatLng;
 import org.maplibre.android.location.LocationComponentActivationOptions;
+import org.maplibre.android.maps.AttributionDialogManager;
 import org.maplibre.android.maps.MapLibreMap;
 import org.maplibre.android.maps.MapView;
 import org.maplibre.android.maps.Style;
@@ -326,6 +328,15 @@ public class MapLibreMapAdapter implements AnyMap, Style.OnStyleLoaded {
 		map.getUiSettings().setAttributionMargins(base + left, base, base, base + bottom);
 		map.getUiSettings().setLogoMargins(base + left, base, base, base + bottom);
 		map.moveCamera(org.maplibre.android.camera.CameraUpdateFactory.paddingTo(left, top, right, bottom));
+	}
+
+	@Override
+	public void setAttributionClickListener(final AttributionClickListener listener) {
+		map.getUiSettings().setAttributionDialogManager(new AttributionDialogManager(context, map) {
+			protected void showAttributionDialog(@NonNull String[] attributionTitles) {
+				listener.onClick(attributionTitles, this);
+			}
+		});
 	}
 
 	@Override

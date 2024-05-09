@@ -82,6 +82,8 @@ public interface AnyMap {
 
 	CameraUpdateFactory getCameraUpdateFactory();
 
+	void setAttributionClickListener(AttributionClickListener listener);
+
 	enum Type {
 
 		NORMAL,

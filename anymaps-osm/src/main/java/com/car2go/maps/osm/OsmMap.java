@@ -12,6 +12,7 @@ import android.view.MotionEvent;
 import android.view.View;
 
 import com.car2go.maps.AnyMap;
+import com.car2go.maps.AttributionClickListener;
 import com.car2go.maps.BitmapDescriptorFactory;
 import com.car2go.maps.CameraUpdate;
 import com.car2go.maps.CameraUpdateFactory;
@@ -224,6 +225,11 @@ class OsmMap implements AnyMap {
     @Override
     public CameraUpdateFactory getCameraUpdateFactory() {
         return com.car2go.maps.osm.CameraUpdateFactory.getInstance();
+    }
+
+    @Override
+    public void setAttributionClickListener(AttributionClickListener listener) {
+        // Do nothing
     }
 
     private XYTileSource getTileSource(boolean dark) {
