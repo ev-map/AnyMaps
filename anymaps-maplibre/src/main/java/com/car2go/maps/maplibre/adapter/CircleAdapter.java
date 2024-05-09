@@ -7,18 +7,17 @@
 package com.car2go.maps.maplibre.adapter;
 
 import com.car2go.maps.model.Circle;
-
-import org.maplibre.android.plugins.annotation.CircleManager;
+import com.mapbox.mapboxsdk.plugins.annotation.CircleManager;
 
 /**
  * Adapts Google Circle to AnyMap Circle
  */
 public class CircleAdapter implements Circle {
 
-	private final org.maplibre.android.plugins.annotation.Circle circle;
+	private final com.mapbox.mapboxsdk.plugins.annotation.Circle circle;
 	private CircleManager manager;
 
-	public CircleAdapter(org.maplibre.android.plugins.annotation.Circle circle, CircleManager manager) {
+	public CircleAdapter(com.mapbox.mapboxsdk.plugins.annotation.Circle circle, CircleManager manager) {
 		this.circle = circle;
 		this.manager = manager;
 	}

@@ -8,8 +8,7 @@ package com.car2go.maps.maplibre.adapter.factory.anymap;
 
 import com.car2go.maps.maplibre.adapter.UiSettingsAdapter;
 import com.car2go.maps.maplibre.adapter.factory.Mapper;
-
-import org.maplibre.android.maps.UiSettings;
+import com.mapbox.mapboxsdk.maps.UiSettings;
 
 /**
  * Maps Google UiSettings to AnyMap UiSettings

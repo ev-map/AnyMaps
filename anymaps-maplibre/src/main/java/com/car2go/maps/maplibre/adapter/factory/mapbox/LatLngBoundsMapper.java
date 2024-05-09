@@ -9,13 +9,12 @@ package com.car2go.maps.maplibre.adapter.factory.mapbox;
 import com.car2go.maps.maplibre.adapter.AnyMapAdapter;
 import com.car2go.maps.maplibre.adapter.factory.Mapper;
 import com.car2go.maps.model.LatLngBounds;
-
-import org.maplibre.android.geometry.LatLng;
+import com.mapbox.mapboxsdk.geometry.LatLng;
 
 /**
  * Maps AnyMap LatLngBounds to Google LatLngBounds
  */
-public class LatLngBoundsMapper implements Mapper<LatLngBounds, org.maplibre.android.geometry.LatLngBounds> {
+public class LatLngBoundsMapper implements Mapper<LatLngBounds, com.mapbox.mapboxsdk.geometry.LatLngBounds> {
 
 	private final AnyMapAdapter anyMapAdapter;
 
@@ -24,11 +23,11 @@ public class LatLngBoundsMapper implements Mapper<LatLngBounds, org.maplibre.and
 	}
 
 	@Override
-	public org.maplibre.android.geometry.LatLngBounds map(LatLngBounds input) {
+	public com.mapbox.mapboxsdk.geometry.LatLngBounds map(LatLngBounds input) {
 		LatLng southWest = anyMapAdapter.map(input.southwest);
 		LatLng northEast = anyMapAdapter.map(input.northeast);
 
-		return org.maplibre.android.geometry.LatLngBounds.from(
+		return com.mapbox.mapboxsdk.geometry.LatLngBounds.from(
 				northEast.getLatitude(), northEast.getLongitude(),
 				southWest.getLatitude(), southWest.getLongitude());
 	}

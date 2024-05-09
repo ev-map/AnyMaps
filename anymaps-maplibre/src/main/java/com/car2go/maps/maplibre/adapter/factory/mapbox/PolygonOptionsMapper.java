@@ -10,9 +10,8 @@ import com.car2go.maps.maplibre.adapter.AnyMapAdapter;
 import com.car2go.maps.maplibre.adapter.ColorUtils;
 import com.car2go.maps.maplibre.adapter.factory.Mapper;
 import com.car2go.maps.model.PolygonOptions;
-
-import org.maplibre.android.geometry.LatLng;
-import org.maplibre.android.plugins.annotation.FillOptions;
+import com.mapbox.mapboxsdk.geometry.LatLng;
+import com.mapbox.mapboxsdk.plugins.annotation.FillOptions;
 
 import java.util.ArrayList;
 import java.util.List;

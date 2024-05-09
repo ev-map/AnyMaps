@@ -15,10 +15,9 @@ import com.car2go.maps.AnyMap;
 import com.car2go.maps.MapContainerView;
 import com.car2go.maps.OnMapReadyCallback;
 import com.car2go.maps.maplibre.adapter.MapLibreMapAdapter;
-
-import org.maplibre.android.maps.MapLibreMap;
-import org.maplibre.android.maps.MapLibreMapOptions;
-import org.maplibre.android.maps.Style;
+import com.mapbox.mapboxsdk.maps.MapboxMap;
+import com.mapbox.mapboxsdk.maps.MapboxMapOptions;
+import com.mapbox.mapboxsdk.maps.Style;
 
 import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
@@ -28,7 +27,7 @@ import androidx.core.content.ContextCompat;
  */
 public class MapView extends MapContainerView {
 
-	private org.maplibre.android.maps.MapView mapView;
+	private com.mapbox.mapboxsdk.maps.MapView mapView;
 
 	private AnyMap map;
 
@@ -45,14 +44,14 @@ public class MapView extends MapContainerView {
 	}
 
 	private void initView(Context context, AttributeSet attrs) {
-		MapLibreMapOptions options = MapLibreMapOptions.createFromAttributes(context, attrs);
+		MapboxMapOptions options = MapboxMapOptions.createFromAttributes(context, attrs);
 
 		TypedValue typedValue = new TypedValue();
 		context.getTheme().resolveAttribute(android.R.attr.colorBackground, typedValue, true);
 		int colorBackground = ContextCompat.getColor(context, typedValue.resourceId);
 
 		options.foregroundLoadColor(colorBackground);
-		mapView = new org.maplibre.android.maps.MapView(context, options);
+		mapView = new com.mapbox.mapboxsdk.maps.MapView(context, options);
 
 		addView(mapView);
 	}
@@ -64,11 +63,11 @@ public class MapView extends MapContainerView {
 			return;
 		}
 
-		mapView.getMapAsync(new org.maplibre.android.maps.OnMapReadyCallback() {
+		mapView.getMapAsync(new com.mapbox.mapboxsdk.maps.OnMapReadyCallback() {
 			@Override
-			public void onMapReady(@NonNull MapLibreMap MapLibreMap) {
+			public void onMapReady(@NonNull MapboxMap mapboxMap) {
 				if (map == null) {
-					final MapLibreMapAdapter map = new MapLibreMapAdapter(MapLibreMap, mapView, getContext());
+					final MapLibreMapAdapter map = new MapLibreMapAdapter(mapboxMap, mapView, getContext());
 					map.callback = new Style.OnStyleLoaded() {
 						@Override
 						public void onStyleLoaded(@NonNull Style style) {

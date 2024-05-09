@@ -13,9 +13,9 @@ import com.car2go.maps.CameraUpdate;
  */
 public class CameraUpdateAdapter implements CameraUpdate {
 
-	public final org.maplibre.android.camera.CameraUpdate wrappedCameraUpdate;
+	public final com.mapbox.mapboxsdk.camera.CameraUpdate wrappedCameraUpdate;
 
-	public CameraUpdateAdapter(org.maplibre.android.camera.CameraUpdate wrappedCameraUpdate) {
+	public CameraUpdateAdapter(com.mapbox.mapboxsdk.camera.CameraUpdate wrappedCameraUpdate) {
 		this.wrappedCameraUpdate = wrappedCameraUpdate;
 	}
 

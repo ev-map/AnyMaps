@@ -9,8 +9,7 @@ package com.car2go.maps.maplibre.adapter.factory.anymap;
 import com.car2go.maps.maplibre.adapter.AnyMapAdapter;
 import com.car2go.maps.maplibre.adapter.factory.Mapper;
 import com.car2go.maps.model.LatLng;
-
-import org.maplibre.android.camera.CameraPosition;
+import com.mapbox.mapboxsdk.camera.CameraPosition;
 
 /**
  * Maps Google CameraPosition to AnyMap CameraPosition

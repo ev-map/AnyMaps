@@ -8,9 +8,8 @@ package com.car2go.maps.maplibre.adapter;
 
 import com.car2go.maps.model.LatLng;
 import com.car2go.maps.model.Polygon;
-
-import org.maplibre.android.plugins.annotation.Fill;
-import org.maplibre.android.plugins.annotation.FillManager;
+import com.mapbox.mapboxsdk.plugins.annotation.Fill;
+import com.mapbox.mapboxsdk.plugins.annotation.FillManager;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,7 +19,7 @@ import java.util.List;
  */
 public class PolygonAdapter implements Polygon {
 
-	private final org.maplibre.android.plugins.annotation.Fill polygon;
+	private final com.mapbox.mapboxsdk.plugins.annotation.Fill polygon;
 	private final FillManager manager;
 	private final AnyMapAdapter anyMapAdapter;
 
@@ -32,21 +31,21 @@ public class PolygonAdapter implements Polygon {
 
 	@Override
 	public void setHoles(List<List<LatLng>> holes) {
-		List<List<org.maplibre.android.geometry.LatLng>> lst = mapHoles(holes);
+		List<List<com.mapbox.mapboxsdk.geometry.LatLng>> lst = mapHoles(holes);
 		lst.add(0, polygon.getLatLngs().get(0));
 		polygon.setLatLngs(lst);
 	}
 
 	@Override
 	public List<LatLng> getPoints() {
-		return anyMapAdapter.mapList(org.maplibre.android.geometry.LatLng.class, polygon.getLatLngs().get(0));
+		return anyMapAdapter.mapList(com.mapbox.mapboxsdk.geometry.LatLng.class, polygon.getLatLngs().get(0));
 	}
 
-	private List<List<org.maplibre.android.geometry.LatLng>> mapHoles(List<List<LatLng>> holes) {
-		ArrayList<List<org.maplibre.android.geometry.LatLng>> result = new ArrayList<>();
+	private List<List<com.mapbox.mapboxsdk.geometry.LatLng>> mapHoles(List<List<LatLng>> holes) {
+		ArrayList<List<com.mapbox.mapboxsdk.geometry.LatLng>> result = new ArrayList<>();
 
 		for (List<LatLng> hole : holes) {
-			List<org.maplibre.android.geometry.LatLng> mapboxHole = anyMapAdapter.mapList(LatLng.class, hole);
+			List<com.mapbox.mapboxsdk.geometry.LatLng> mapboxHole = anyMapAdapter.mapList(LatLng.class, hole);
 
 			result.add(mapboxHole);
 		}

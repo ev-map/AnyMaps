@@ -27,14 +27,16 @@ import com.car2go.maps.model.CircleOptions;
 import com.car2go.maps.model.MarkerOptions;
 import com.car2go.maps.model.PolygonOptions;
 import com.car2go.maps.model.PolylineOptions;
-
-import org.maplibre.android.camera.CameraPosition;
-import org.maplibre.android.geometry.LatLng;
-import org.maplibre.android.geometry.LatLngBounds;
-import org.maplibre.android.geometry.VisibleRegion;
-import org.maplibre.android.maps.MapLibreMap;
-import org.maplibre.android.maps.Projection;
-import org.maplibre.android.maps.UiSettings;
+import com.mapbox.mapboxsdk.camera.CameraPosition;
+import com.mapbox.mapboxsdk.geometry.LatLng;
+import com.mapbox.mapboxsdk.geometry.LatLngBounds;
+import com.mapbox.mapboxsdk.geometry.VisibleRegion;
+import com.mapbox.mapboxsdk.maps.MapboxMap;
+import com.mapbox.mapboxsdk.maps.Projection;
+import com.mapbox.mapboxsdk.maps.UiSettings;
+import com.mapbox.mapboxsdk.plugins.annotation.Circle;
+import com.mapbox.mapboxsdk.plugins.annotation.Fill;
+import com.mapbox.mapboxsdk.plugins.annotation.Line;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -50,15 +52,15 @@ public class AnyMapAdapter {
 	private final HashMap<Class<?>, Mapper> mappers = new HashMap<>();
 	public final Context context;
 	public final BitmapDescriptorFactory bitmapDescriptorFactory;
-	private MapLibreMap map;
+	private MapboxMap map;
 	public DrawableComponentFactory drawableComponentFactory;
 
-	public AnyMapAdapter(Context context, BitmapDescriptorFactory bitmapDescriptorFactory, MapLibreMap map) {
+	public AnyMapAdapter(Context context, BitmapDescriptorFactory bitmapDescriptorFactory, MapboxMap map) {
 		this.context = context;
 		this.bitmapDescriptorFactory = bitmapDescriptorFactory;
 		this.map = map;
 		registerMapboxToAnyMapMappers();
-		registerAnyMapToMapLibreMappers();
+		registerAnyMapToMapboxMappers();
 	}
 
 	private void registerMapboxToAnyMapMappers() {
@@ -100,7 +102,7 @@ public class AnyMapAdapter {
 		);
 	}
 
-	private void registerAnyMapToMapLibreMappers() {
+	private void registerAnyMapToMapboxMappers() {
 		registerMapper(
 				com.car2go.maps.model.LatLng.class,
 				new com.car2go.maps.maplibre.adapter.factory.mapbox.LatLngMapper()

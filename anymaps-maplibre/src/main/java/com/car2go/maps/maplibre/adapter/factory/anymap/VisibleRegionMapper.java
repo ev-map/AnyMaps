@@ -9,8 +9,7 @@ package com.car2go.maps.maplibre.adapter.factory.anymap;
 import com.car2go.maps.maplibre.adapter.AnyMapAdapter;
 import com.car2go.maps.maplibre.adapter.factory.Mapper;
 import com.car2go.maps.model.LatLngBounds;
-
-import org.maplibre.android.geometry.VisibleRegion;
+import com.mapbox.mapboxsdk.geometry.VisibleRegion;
 
 /**
  * Maps Google VisibleRegion to AnyMap VisibleRegion

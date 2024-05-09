@@ -10,15 +10,14 @@ import com.car2go.maps.maplibre.adapter.AnyMapAdapter;
 import com.car2go.maps.maplibre.adapter.ColorUtils;
 import com.car2go.maps.maplibre.adapter.factory.Mapper;
 import com.car2go.maps.model.CircleOptions;
-
-import org.maplibre.android.geometry.LatLng;
+import com.mapbox.mapboxsdk.geometry.LatLng;
 
 ;
 
 /**
  * Maps AnyMap CircleOptions to Google CircleOptions
  */
-public class CircleOptionsMapper implements Mapper<CircleOptions, org.maplibre.android.plugins.annotation.CircleOptions> {
+public class CircleOptionsMapper implements Mapper<CircleOptions, com.mapbox.mapboxsdk.plugins.annotation.CircleOptions> {
 
 	private final AnyMapAdapter anyMapAdapter;
 
@@ -27,10 +26,10 @@ public class CircleOptionsMapper implements Mapper<CircleOptions, org.maplibre.a
 	}
 
 	@Override
-	public org.maplibre.android.plugins.annotation.CircleOptions map(CircleOptions input) {
+	public com.mapbox.mapboxsdk.plugins.annotation.CircleOptions map(CircleOptions input) {
 		LatLng center = anyMapAdapter.map(input.getCenter());
 
-		return new org.maplibre.android.plugins.annotation.CircleOptions()
+		return new com.mapbox.mapboxsdk.plugins.annotation.CircleOptions()
 				.withLatLng(center)
 				.withCircleRadius((float) input.getRadius())
 				.withCircleColor(ColorUtils.toHex(input.getFillColor()))

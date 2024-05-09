@@ -7,8 +7,7 @@
 package com.car2go.maps.maplibre.adapter.factory.anymap;
 
 import com.car2go.maps.maplibre.adapter.factory.Mapper;
-
-import org.maplibre.android.geometry.LatLng;
+import com.mapbox.mapboxsdk.geometry.LatLng;
 
 /**
  * Maps Google LatLng to AnyMap LatLng

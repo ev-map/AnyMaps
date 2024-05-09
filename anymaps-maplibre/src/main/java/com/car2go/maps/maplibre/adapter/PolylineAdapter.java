@@ -7,9 +7,8 @@
 package com.car2go.maps.maplibre.adapter;
 
 import com.car2go.maps.model.Polyline;
-
-import org.maplibre.android.plugins.annotation.Line;
-import org.maplibre.android.plugins.annotation.LineManager;
+import com.mapbox.mapboxsdk.plugins.annotation.Line;
+import com.mapbox.mapboxsdk.plugins.annotation.LineManager;
 
 /**
  * Adapts Google Polyline to AnyMap Polyline

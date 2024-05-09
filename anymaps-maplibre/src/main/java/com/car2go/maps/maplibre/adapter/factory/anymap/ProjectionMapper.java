@@ -9,8 +9,7 @@ package com.car2go.maps.maplibre.adapter.factory.anymap;
 import com.car2go.maps.maplibre.adapter.AnyMapAdapter;
 import com.car2go.maps.maplibre.adapter.ProjectionAdapter;
 import com.car2go.maps.maplibre.adapter.factory.Mapper;
-
-import org.maplibre.android.maps.Projection;
+import com.mapbox.mapboxsdk.maps.Projection;
 
 /**
  * Maps Google Projection to AnyMap Projection

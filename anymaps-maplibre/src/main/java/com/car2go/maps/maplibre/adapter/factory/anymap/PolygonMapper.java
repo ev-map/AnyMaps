@@ -9,8 +9,7 @@ package com.car2go.maps.maplibre.adapter.factory.anymap;
 import com.car2go.maps.maplibre.adapter.AnyMapAdapter;
 import com.car2go.maps.maplibre.adapter.PolygonAdapter;
 import com.car2go.maps.maplibre.adapter.factory.Mapper;
-
-import org.maplibre.android.plugins.annotation.Fill;
+import com.mapbox.mapboxsdk.plugins.annotation.Fill;
 
 /**
  * Maps Google Polygon to AnyMap Polygon

@@ -18,10 +18,10 @@ import com.car2go.maps.model.VisibleRegion;
  */
 public class ProjectionAdapter implements Projection {
 
-	private final org.maplibre.android.maps.Projection projection;
+	private final com.mapbox.mapboxsdk.maps.Projection projection;
 	private final AnyMapAdapter anyMapAdapter;
 
-	public ProjectionAdapter(org.maplibre.android.maps.Projection projection, AnyMapAdapter anyMapAdapter) {
+	public ProjectionAdapter(com.mapbox.mapboxsdk.maps.Projection projection, AnyMapAdapter anyMapAdapter) {
 		this.projection = projection;
 		this.anyMapAdapter = anyMapAdapter;
 	}
@@ -38,7 +38,7 @@ public class ProjectionAdapter implements Projection {
 
 	@Override
 	public Point toScreenLocation(LatLng latLng) {
-		org.maplibre.android.geometry.LatLng mapboxLatLng = anyMapAdapter.map(latLng);
+		com.mapbox.mapboxsdk.geometry.LatLng mapboxLatLng = anyMapAdapter.map(latLng);
 		PointF result = projection.toScreenLocation(mapboxLatLng);
 		return new Point(Math.round(result.x), Math.round(result.y));
 	}

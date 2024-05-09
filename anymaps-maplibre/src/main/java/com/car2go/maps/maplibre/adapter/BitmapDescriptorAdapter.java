@@ -7,8 +7,7 @@
 package com.car2go.maps.maplibre.adapter;
 
 import com.car2go.maps.model.BitmapDescriptor;
-
-import org.maplibre.android.annotations.Icon;
+import com.mapbox.mapboxsdk.annotations.Icon;
 
 /**
  * Adapts Mapbox BitmapDescriptor to AnyMap BitmapDescriptor
