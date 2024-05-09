@@ -49,6 +49,11 @@ public abstract class MapContainerView extends FrameLayout {
 	public abstract void onPause();
 
 	/**
+	 * Propagate the onStop lifecycle call to the AnyMap.
+	 */
+	public abstract void onStop();
+
+	/**
 	 * Propagate the onDestroy lifecycle call to the AnyMap.
 	 */
 	public abstract void onDestroy();

@@ -15,7 +15,6 @@ import android.util.TypedValue;
 import com.car2go.maps.MapContainerView;
 import com.car2go.maps.OnMapReadyCallback;
 
-import org.osmdroid.tileprovider.tilesource.XYTileSource;
 import org.osmdroid.views.CustomZoomButtonsController;
 import org.osmdroid.views.overlay.CopyrightOverlay;
 
@@ -103,6 +102,11 @@ public class MapView extends MapContainerView {
 
 	@Override
 	public void onPause() {
+		// Do nothing
+	}
+
+	@Override
+	public void onStop() {
 		// Do nothing
 	}
 
