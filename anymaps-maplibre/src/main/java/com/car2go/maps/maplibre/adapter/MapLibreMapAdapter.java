@@ -76,6 +76,8 @@ public class MapLibreMapAdapter implements AnyMap, Style.OnStyleLoaded {
 		bitmapDescriptorFactory = new com.car2go.maps.maplibre.BitmapDescriptorFactory(context, map);
 		this.context = context;
 		this.anyMapAdapter = new AnyMapAdapter(context, bitmapDescriptorFactory, map);
+		this.drawableComponentFactory = new DrawableComponentFactory(anyMapAdapter, map, mapView);
+		anyMapAdapter.drawableComponentFactory = this.drawableComponentFactory;
 		this.cameraUpdateFactory = new com.car2go.maps.maplibre.CameraUpdateFactory(anyMapAdapter);
 
 		map.getUiSettings().setCompassGravity(Gravity.START | Gravity.TOP);
@@ -404,20 +406,12 @@ public class MapLibreMapAdapter implements AnyMap, Style.OnStyleLoaded {
 			style.addLayerAbove(new RasterLayer("satellite", "satellite2").withSourceLayer("satellite2"), "water");
 		}
 
-		if (this.drawableComponentFactory == null) {
-			this.drawableComponentFactory = new DrawableComponentFactory(this.anyMapAdapter, map, mapView, style);
-			anyMapAdapter.drawableComponentFactory = this.drawableComponentFactory;
-		}
-
 		if (location && (!map.getLocationComponent().isLocationComponentActivated()
 				|| !map.getLocationComponent().isLocationComponentEnabled())) {
 			enableLocation();
 		}
 
-		if (callback != null) {
-			callback.onStyleLoaded(style);
-			callback = null;
-		}
+		drawableComponentFactory.setStyle(style);
 	}
 
 	/**

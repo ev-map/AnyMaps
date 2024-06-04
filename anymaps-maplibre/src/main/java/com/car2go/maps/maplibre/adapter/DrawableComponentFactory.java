@@ -35,19 +35,18 @@ import java.util.Map;
 public class DrawableComponentFactory {
 
 	private final MapboxMap map;
+	private final MapView mapView;
 	private final AnyMapAdapter anyMapAdapter;
-	public final CircleManager circleManager;
-	public final LineManager lineManager;
-	public final FillManager fillManager;
+	public CircleManager circleManager;
+	public LineManager lineManager;
+	public FillManager fillManager;
 	public final Map<Long, MarkerAdapter> markers;
 
-	public DrawableComponentFactory(AnyMapAdapter anyMapAdapter, MapboxMap map, MapView mapView, Style style) {
+	public DrawableComponentFactory(AnyMapAdapter anyMapAdapter, MapboxMap map, MapView mapView) {
 		this.anyMapAdapter = anyMapAdapter;
 		this.map = map;
+		this.mapView = mapView;
 
-		circleManager = new CircleManager(mapView, map, style);
-		lineManager = new LineManager(mapView, map, style);
-		fillManager = new FillManager(mapView, map, style);
 		markers = new HashMap<>();
 	}
 
@@ -70,6 +69,8 @@ public class DrawableComponentFactory {
 	 * @return added {@link Circle} which is bound to the map
 	 */
 	public Circle addCircle(CircleOptions options) {
+		if (circleManager == null) throw new IllegalStateException("style has not been loaded yet");
+
 		com.mapbox.mapboxsdk.plugins.annotation.CircleOptions mapboxOptions = anyMapAdapter.map(options);
 		com.mapbox.mapboxsdk.plugins.annotation.Circle circle = circleManager.create(mapboxOptions);
 		return anyMapAdapter.map(circle);
@@ -81,6 +82,8 @@ public class DrawableComponentFactory {
 	 * @return added {@link Polygon} which is bound to the map
 	 */
 	public Polygon addPolygon(PolygonOptions options) {
+		if (fillManager == null) throw new IllegalStateException("style has not been loaded yet");
+
 		FillOptions mapboxOptions = anyMapAdapter.map(options);
 		Fill polygon = fillManager.create(mapboxOptions);
 		return anyMapAdapter.map(polygon);
@@ -92,8 +95,16 @@ public class DrawableComponentFactory {
 	 * @return added {@link Polyline} which is bound to the map
 	 */
 	public Polyline addPolyline(PolylineOptions options) {
+		if (lineManager == null) throw new IllegalStateException("style has not been loaded yet");
+
 		LineOptions mapboxOptions = anyMapAdapter.map(options);
 		Line line = lineManager.create(mapboxOptions);
 		return anyMapAdapter.map(line);
+	}
+
+	public void setStyle(Style style) {
+		circleManager = new CircleManager(mapView, map, style);
+		lineManager = new LineManager(mapView, map, style);
+		fillManager = new FillManager(mapView, map, style);
 	}
 }

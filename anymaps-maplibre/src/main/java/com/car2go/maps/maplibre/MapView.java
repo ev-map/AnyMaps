@@ -17,7 +17,6 @@ import com.car2go.maps.OnMapReadyCallback;
 import com.car2go.maps.maplibre.adapter.MapLibreMapAdapter;
 import com.mapbox.mapboxsdk.maps.MapboxMap;
 import com.mapbox.mapboxsdk.maps.MapboxMapOptions;
-import com.mapbox.mapboxsdk.maps.Style;
 
 import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
@@ -67,14 +66,8 @@ public class MapView extends MapContainerView {
 			@Override
 			public void onMapReady(@NonNull MapboxMap mapboxMap) {
 				if (map == null) {
-					final MapLibreMapAdapter map = new MapLibreMapAdapter(mapboxMap, mapView, getContext());
-					map.callback = new Style.OnStyleLoaded() {
-						@Override
-						public void onStyleLoaded(@NonNull Style style) {
-							MapView.this.map = map;
-							callback.onMapReady(map);
-						}
-					};
+					MapView.this.map = new MapLibreMapAdapter(mapboxMap, mapView, getContext());
+					callback.onMapReady(map);
 				}
 			}
 		});

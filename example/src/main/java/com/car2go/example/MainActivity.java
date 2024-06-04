@@ -53,6 +53,9 @@ public class MainActivity extends AppCompatActivity {
 								.anchor(0.5f, 0.5f)
 								.icon(map.getBitmapDescriptorFactory().fromResource(R.drawable.marker))
 				);
+
+				map.setMapType(AnyMap.Type.HYBRID);
+				map.setMapStyle(AnyMap.Style.DARK);
 			}
 		});
 	}
