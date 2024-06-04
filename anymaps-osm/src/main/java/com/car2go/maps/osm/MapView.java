@@ -106,6 +106,11 @@ public class MapView extends MapContainerView {
 	}
 
 	@Override
+	public void onStart() {
+		// Do nothing
+	}
+
+	@Override
 	public void onStop() {
 		// Do nothing
 	}

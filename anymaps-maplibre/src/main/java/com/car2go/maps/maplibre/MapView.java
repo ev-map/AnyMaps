@@ -101,6 +101,11 @@ public class MapView extends MapContainerView {
 	}
 
 	@Override
+	public void onStart() {
+		mapView.onStart();
+	}
+
+	@Override
 	public void onDestroy() {
 		if (map != null) {
 			map.setMyLocationEnabled(false);

@@ -155,6 +155,14 @@ public class MapFragment extends Fragment {
 	}
 
 	@Override
+	public void onStart() {
+		super.onStart();
+		if (map != null) {
+			map.onStart();
+		}
+	}
+
+	@Override
 	public void onStop() {
 		super.onStop();
 		if (map != null) {
