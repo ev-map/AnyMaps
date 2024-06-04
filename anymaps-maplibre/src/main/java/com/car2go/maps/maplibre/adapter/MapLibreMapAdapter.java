@@ -63,6 +63,7 @@ public class MapLibreMapAdapter implements AnyMap, Style.OnStyleLoaded {
 	private final AnyMapAdapter anyMapAdapter;
 	private Type mapType = Type.NORMAL;
 	private Style mapStyle = Style.NORMAL;
+	private String currentStyleUrl = null;
 	private boolean location = false;
 	public com.mapbox.mapboxsdk.maps.Style.OnStyleLoaded callback = null;
 	private final String jawgAccessToken;
@@ -254,7 +255,10 @@ public class MapLibreMapAdapter implements AnyMap, Style.OnStyleLoaded {
 
 	private void updateMapStyle() {
 		String style = getStyle();
-		map.setStyle(style, this);
+		if (!style.equals(currentStyleUrl)) {
+			map.setStyle(style, this);
+			currentStyleUrl = style;
+		}
 	}
 
 	private String getStyle() {
