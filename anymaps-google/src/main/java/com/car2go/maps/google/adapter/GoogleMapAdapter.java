@@ -17,7 +17,6 @@ import com.car2go.maps.CameraUpdate;
 import com.car2go.maps.CameraUpdateFactory;
 import com.car2go.maps.Projection;
 import com.car2go.maps.UiSettings;
-import com.car2go.maps.google.R;
 import com.car2go.maps.model.CameraPosition;
 import com.car2go.maps.model.Circle;
 import com.car2go.maps.model.CircleOptions;
@@ -29,7 +28,7 @@ import com.car2go.maps.model.Polyline;
 import com.car2go.maps.model.PolylineOptions;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.MapStyleOptions;
+import com.google.android.gms.maps.model.MapColorScheme;
 
 import androidx.annotation.RequiresPermission;
 
@@ -245,12 +244,11 @@ public class GoogleMapAdapter implements AnyMap {
 	public void setMapStyle(Style style) {
 		switch (style) {
 			case DARK:
-				map.setMapStyle(
-						MapStyleOptions.loadRawResourceStyle(context, R.raw.maps_night_mode));
+				map.setMapColorScheme(MapColorScheme.DARK);
 				break;
 			case NORMAL:
 			default:
-				map.setMapStyle(null);
+				map.setMapColorScheme(MapColorScheme.LIGHT);
 				break;
 		}
 	}
