@@ -71,7 +71,8 @@ public class CameraUpdateFactory implements com.car2go.maps.CameraUpdateFactory 
 
 	@Override
 	public CameraUpdate scrollBy(float distanceX, float distanceY) {
-		return new ScrollByCameraUpdateAdapter(distanceX, distanceY);
+		// MapLibre uses inverted values for scrollBy
+		return new ScrollByCameraUpdateAdapter(-distanceX, -distanceY);
 	}
 
 	@Override
