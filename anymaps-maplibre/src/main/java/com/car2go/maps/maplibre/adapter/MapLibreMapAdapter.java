@@ -68,8 +68,9 @@ public class MapLibreMapAdapter implements AnyMap, Style.OnStyleLoaded {
 	public com.mapbox.mapboxsdk.maps.Style.OnStyleLoaded callback = null;
 	private final String jawgAccessToken;
 	private final String arcgisAccessToken;
+	private double[] padding = {0.0, 0.0, 0.0, 0.0};
 
-	public MapLibreMapAdapter(MapboxMap map, MapView mapView, Context context) {
+	public MapLibreMapAdapter(final MapboxMap map, MapView mapView, Context context) {
 		this.map = map;
 		this.mapView = mapView;
 
@@ -316,6 +317,8 @@ public class MapLibreMapAdapter implements AnyMap, Style.OnStyleLoaded {
 					.builder(context, map.getStyle()).build();
 			map.getLocationComponent().activateLocationComponent(options);
 			map.getLocationComponent().setLocationComponentEnabled(true);
+			// Padding has to be set again after enabling location
+			map.moveCamera(com.mapbox.mapboxsdk.camera.CameraUpdateFactory.paddingTo(padding));
 		}
 	}
 
@@ -338,7 +341,11 @@ public class MapLibreMapAdapter implements AnyMap, Style.OnStyleLoaded {
 		map.getUiSettings().setCompassMargins(base, base + top, base + right, base);
 		map.getUiSettings().setAttributionMargins(base + left, base, base, base + bottom);
 		map.getUiSettings().setLogoMargins(base + left, base, base, base + bottom);
-		map.moveCamera(com.mapbox.mapboxsdk.camera.CameraUpdateFactory.paddingTo(left, top, right, bottom));
+		padding[0] = left;
+		padding[1] = top;
+		padding[2] = right;
+		padding[3] = bottom;
+		map.moveCamera(com.mapbox.mapboxsdk.camera.CameraUpdateFactory.paddingTo(padding));
 	}
 
 	@Override
