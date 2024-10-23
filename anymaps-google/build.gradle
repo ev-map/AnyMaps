@@ -32,6 +32,7 @@ dependencies {
     implementation project(':anymaps-base')
 
     compileOnly 'com.google.android.gms:play-services-maps:19.0.0'
+    testImplementation 'com.google.android.gms:play-services-maps:19.0.0'
 
     testImplementation 'junit:junit:4.13.1'
     testImplementation 'org.powermock:powermock-module-junit4:1.5.2'

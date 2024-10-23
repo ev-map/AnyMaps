@@ -9,6 +9,7 @@ package com.car2go.example;
 import android.os.Bundle;
 
 import com.car2go.maps.AnyMap;
+import com.car2go.maps.MapFactory;
 import com.car2go.maps.MapFragment;
 import com.car2go.maps.OnMapReadyCallback;
 import com.car2go.maps.model.LatLng;
@@ -27,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
 
 		if (savedInstanceState == null) {
 			mapFragment = new MapFragment();
-			mapFragment.setPriority(new String[]{MapFragment.MAPLIBRE});
+			mapFragment.setPriority(new String[]{MapFactory.MAPLIBRE});
 			getSupportFragmentManager()
 					.beginTransaction()
 					.replace(R.id.map, mapFragment, "map")
