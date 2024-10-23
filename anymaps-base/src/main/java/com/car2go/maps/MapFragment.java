@@ -37,6 +37,14 @@ public class MapFragment extends Fragment {
 
 	private Queue<OnMapReadyCallback> waitingCallbacks = new LinkedList<>();
 
+	@Override
+	public void onCreate(@Nullable Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		if (savedInstanceState != null) {
+			priority = savedInstanceState.getStringArray("priority");
+		}
+	}
+
 	@Nullable
 	@Override
 	public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -156,5 +164,6 @@ public class MapFragment extends Fragment {
 		if (map != null) {
 			map.onSaveInstanceState(outState);
 		}
+		outState.putStringArray("priority", priority);
 	}
 }
