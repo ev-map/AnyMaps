@@ -48,16 +48,19 @@ public class MapFragment extends Fragment {
 	@Nullable
 	@Override
 	public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-		if (map == null) {
-			map = createMap();
-		}
+		map = createMap();
+		return map;
+	}
+
+	@Override
+	public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+		super.onViewCreated(view, savedInstanceState);
 		map.onCreate(savedInstanceState);
 
 		while (!waitingCallbacks.isEmpty()) {
 			// handle getMapAsync calls done before onCreate was called
 			map.getMapAsync(waitingCallbacks.remove());
 		}
-		return map;
 	}
 
 	public void getMapAsync(@NonNull OnMapReadyCallback callback) {
@@ -143,10 +146,11 @@ public class MapFragment extends Fragment {
 	}
 
 	@Override
-	public void onDestroy() {
-		super.onDestroy();
+	public void onDestroyView() {
+		super.onDestroyView();
 		if (map != null) {
 			map.onDestroy();
+			map = null;
 		}
 	}
 
