@@ -152,6 +152,7 @@ public class MapFragment extends Fragment {
 			map.onDestroy();
 			map = null;
 		}
+		waitingCallbacks.clear();
 	}
 
 	@Override
