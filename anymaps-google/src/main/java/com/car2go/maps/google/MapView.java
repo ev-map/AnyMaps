@@ -7,7 +7,6 @@
 package com.car2go.maps.google;
 
 import android.content.Context;
-import android.content.res.TypedArray;
 import android.os.Bundle;
 import android.util.AttributeSet;
 import android.util.TypedValue;
@@ -57,19 +56,6 @@ public class MapView extends MapContainerView {
 		context.getTheme().resolveAttribute(android.R.attr.colorBackground, typedValue, true);
 		int colorBackground = ContextCompat.getColor(context, typedValue.resourceId);
 		options.backgroundColor(colorBackground);
-
-		if (attrs == null) {
-			return options;
-		}
-
-		TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.MapView);
-		try {
-			options = options.liteMode(
-					typedArray.getBoolean(R.styleable.MapView_anyMapLiteMode, false)
-			);
-		} finally {
-			typedArray.recycle();
-		}
 
 		return options;
 	}

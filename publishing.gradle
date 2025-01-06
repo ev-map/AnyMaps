@@ -1,0 +1,42 @@
+apply plugin: 'maven-publish'
+
+publishing {
+    publications {
+        release(MavenPublication) {
+            afterEvaluate {
+                from components.release
+            }
+
+            group = 'com.car2go.anylibs'
+            artifactId = project.name
+            version = '7.0.0'
+
+            pom {
+                name = project.name
+                description = project.description
+                url = 'https://github.com/ev-map/AnyMaps'
+                licenses {
+                    license {
+                        name = 'MIT'
+                        url = 'https://opensource.org/license/mit/'
+                    }
+                }
+                developers {
+                    developer {
+                        id = 'sharenowTech'
+                        name = 'SHARE NOW TECH'
+                    }
+                    developer {
+                        id = 'johan12345'
+                        name = 'Johan von Forstner'
+                    }
+                }
+                scm {
+                    connection = 'scm:git@github.com/ev-map/AnyMaps.git'
+                    developerConnection = 'scm:git@github.com/ev-map/AnyMaps.git'
+                    url = 'https://github.com/ev-map/AnyMaps'
+                }
+            }
+        }
+    }
+}

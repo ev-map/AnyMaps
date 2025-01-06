@@ -66,18 +66,7 @@ public class MapView extends MapContainerView {
 	}
 
 	private void applyAttributes(Context context, AttributeSet attrs) {
-		if (attrs == null) {
-			return;
-		}
 
-		TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.MapView);
-		try {
-			boolean liteMode = typedArray.getBoolean(R.styleable.MapView_anyMapLiteMode, false);
-
-			anyMap.getUiSettings().setAllGesturesEnabled(!liteMode);
-		} finally {
-			typedArray.recycle();
-		}
 	}
 
 	@Override

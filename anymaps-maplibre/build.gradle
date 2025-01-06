@@ -10,14 +10,16 @@ ext {
 }
 
 apply plugin: 'com.android.library'
-apply plugin: 'maven'
+apply plugin: 'maven-publish'
+apply from: '../publishing.gradle'
 
 android {
-    compileSdkVersion 31
+    namespace = "com.car2go.maps.maplibre"
 
     defaultConfig {
         minSdkVersion 21
-        targetSdkVersion 31
+        targetSdkVersion 34
+        compileSdk 34
         versionCode 1
         versionName "1.0"
     }
@@ -29,6 +31,11 @@ android {
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
+    }
+    publishing {
+        singleVariant("release") {
+            withSourcesJar()
+        }
     }
 }
 
