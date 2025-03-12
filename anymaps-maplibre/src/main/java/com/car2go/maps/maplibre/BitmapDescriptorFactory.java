@@ -23,12 +23,10 @@ import androidx.annotation.DrawableRes;
 public class BitmapDescriptorFactory implements com.car2go.maps.BitmapDescriptorFactory {
 
 	private final Context context;
-	private MapboxMap map;
 	private IconFactory iconFactory;
 
 	public BitmapDescriptorFactory(Context context, MapboxMap map) {
 		this.context = context;
-		this.map = map;
 		this.iconFactory = IconFactory.getInstance(context);
 	}
 

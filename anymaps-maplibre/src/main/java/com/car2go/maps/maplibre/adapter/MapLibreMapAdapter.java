@@ -55,7 +55,6 @@ import androidx.annotation.RequiresPermission;
 public class MapLibreMapAdapter implements AnyMap, Style.OnStyleLoaded {
 
 	private final MapboxMap map;
-	private final MapView mapView;
 	private DrawableComponentFactory drawableComponentFactory;
 	private final com.car2go.maps.maplibre.BitmapDescriptorFactory bitmapDescriptorFactory;
 	private CameraUpdateFactory cameraUpdateFactory;
@@ -72,8 +71,6 @@ public class MapLibreMapAdapter implements AnyMap, Style.OnStyleLoaded {
 
 	public MapLibreMapAdapter(final MapboxMap map, MapView mapView, Context context) {
 		this.map = map;
-		this.mapView = mapView;
-
 		bitmapDescriptorFactory = new com.car2go.maps.maplibre.BitmapDescriptorFactory(context, map);
 		this.context = context;
 		this.anyMapAdapter = new AnyMapAdapter(context, bitmapDescriptorFactory, map);
