@@ -40,7 +40,7 @@ dependencies {
     implementation project(':anymaps-maplibre')
     implementation project(':anymaps-osm')
 
-    implementation 'com.google.android.gms:play-services-maps:18.0.0'
+    implementation 'com.google.android.gms:play-services-maps:19.1.0'
 
     implementation 'androidx.appcompat:appcompat:1.1.0'
 }
