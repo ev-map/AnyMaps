@@ -80,6 +80,7 @@ public class MapLibreMapAdapter implements AnyMap, Style.OnStyleLoaded {
 
 		map.getUiSettings().setCompassGravity(Gravity.START | Gravity.TOP);
 		map.getUiSettings().setLogoEnabled(false);
+		map.setMinZoomPreference(2.0f);
 
 		ApplicationInfo app;
 		try {
