@@ -275,7 +275,7 @@ public class MapLibreMapAdapter implements AnyMap, Style.OnStyleLoaded {
 			case NORMAL:
 			default:
 				if (mapStyle == Style.DARK) {
-					style = "https://tile.jawg.io/jawg-dark.json";
+					style = "https://api.jawg.io/styles/8dadeeaf-0478-4ab6-a26e-bba7da94b8b1.json";
 				} else {
 					style = "https://tile.jawg.io/jawg-streets.json";
 				}
