@@ -92,7 +92,7 @@ public class CameraUpdateFactory implements com.car2go.maps.CameraUpdateFactory 
 				com.mapbox.mapboxsdk.camera.CameraUpdateFactory.newCameraPosition(
 						new CameraPosition.Builder()
 								.target(anyMapAdapter.map(latLng))
-								.zoom(zoomLevel)
+								.zoom(zoomLevel - 1)  // mapbox zoom levels are shifted by one
 								.bearing(bearing)
 								.build()
 				)
