@@ -13,6 +13,7 @@ import com.car2go.maps.google.adapter.AnyMapAdapter;
 import com.car2go.maps.google.adapter.CameraUpdateAdapter;
 import com.car2go.maps.model.LatLng;
 import com.car2go.maps.model.LatLngBounds;
+import com.google.android.gms.maps.model.CameraPosition;
 
 /**
  * Creates {@link CameraUpdate} objects which can be used to update map camera
@@ -88,6 +89,18 @@ public class CameraUpdateFactory implements com.car2go.maps.CameraUpdateFactory 
 	public CameraUpdate zoomBy(float amount, Point focus) {
 		return new CameraUpdateAdapter(
 				com.google.android.gms.maps.CameraUpdateFactory.zoomBy(amount, focus)
+		);
+	}
+
+	@Override
+	public CameraUpdate newLatLngZoomBearing(LatLng latLng, float zoomLevel, float bearing) {
+		return new CameraUpdateAdapter(
+				com.google.android.gms.maps.CameraUpdateFactory.newCameraPosition(
+						CameraPosition.builder()
+								.target(AnyMapAdapter.adapt(latLng))
+								.zoom(zoomLevel)
+								.bearing(bearing)
+								.build())
 		);
 	}
 

@@ -41,4 +41,6 @@ public interface CameraUpdateFactory {
 	CameraUpdate zoomBy(float amount);
 
 	CameraUpdate zoomBy(float amount, Point focus);
+
+	CameraUpdate newLatLngZoomBearing(LatLng latLng, float zoomLevel, float bearing);
 }

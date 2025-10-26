@@ -14,6 +14,7 @@ import com.car2go.maps.maplibre.adapter.CameraUpdateAdapter;
 import com.car2go.maps.maplibre.adapter.ScrollByCameraUpdateAdapter;
 import com.car2go.maps.model.LatLng;
 import com.car2go.maps.model.LatLngBounds;
+import com.mapbox.mapboxsdk.camera.CameraPosition;
 
 /**
  * Creates {@link CameraUpdate} objects which can be used to update map camera
@@ -83,6 +84,19 @@ public class CameraUpdateFactory implements com.car2go.maps.CameraUpdateFactory 
 	@Override
 	public CameraUpdate zoomBy(float amount, Point focus) {
 		return new CameraUpdateAdapter(com.mapbox.mapboxsdk.camera.CameraUpdateFactory.zoomBy(amount, focus));
+	}
+
+	@Override
+	public CameraUpdate newLatLngZoomBearing(LatLng latLng, float zoomLevel, float bearing) {
+		return new CameraUpdateAdapter(
+				com.mapbox.mapboxsdk.camera.CameraUpdateFactory.newCameraPosition(
+						new CameraPosition.Builder()
+								.target(anyMapAdapter.map(latLng))
+								.zoom(zoomLevel)
+								.bearing(bearing)
+								.build()
+				)
+		);
 	}
 
 }

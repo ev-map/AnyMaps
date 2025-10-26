@@ -71,4 +71,8 @@ public class CameraUpdateFactory implements com.car2go.maps.CameraUpdateFactory 
 		throw new UnsupportedOperationException("not implemented");
 	}
 
+	@Override
+	public CameraUpdate newLatLngZoomBearing(LatLng latLng, float zoomLevel, float bearing) {
+		throw new UnsupportedOperationException("not implemented");
+	}
 }
