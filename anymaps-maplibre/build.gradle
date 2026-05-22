@@ -17,7 +17,7 @@ android {
     namespace = "com.car2go.maps.maplibre"
 
     defaultConfig {
-        minSdkVersion 21
+        minSdkVersion 23
         targetSdkVersion 34
         compileSdk 34
         versionCode 1
@@ -42,7 +42,7 @@ android {
 dependencies {
     implementation project(':anymaps-base')
 
-    implementation 'org.maplibre.gl:android-sdk:11.7.1'
+    implementation 'org.maplibre.gl:android-sdk:13.1.0'
     implementation 'org.maplibre.gl:android-plugin-annotation-v9:3.0.2'
     implementation 'androidx.annotation:annotation:1.5.0'
     implementation 'androidx.appcompat:appcompat:1.5.1'

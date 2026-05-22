@@ -11,7 +11,7 @@ android {
 
     defaultConfig {
         applicationId "com.car2go.example"
-        minSdkVersion 21
+        minSdkVersion 23
         targetSdkVersion 34
         compileSdk 34
         versionCode 1
