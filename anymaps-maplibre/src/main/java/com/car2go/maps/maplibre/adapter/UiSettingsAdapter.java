@@ -32,7 +32,7 @@ public class UiSettingsAdapter implements UiSettings {
 	@Override
 	public void setRotateGesturesEnabled(boolean enabled) {
 		uiSettings.setRotateGesturesEnabled(enabled);
-		uiSettings.setCompassEnabled(false);
+		uiSettings.setCompassEnabled(enabled);
 	}
 
 	@Override
